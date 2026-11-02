@@ -835,228 +835,6 @@
   }
   .db-item span { color: var(--green-mid); margin-right: 6px; }
 
-  /* ── WHY ── */
-  #why { background: var(--navy); }
-  .why-grid {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 2px; margin-top: 60px;
-  }
-  .why-card {
-    background: var(--navy-3);
-    padding: 40px 32px;
-    position: relative; overflow: hidden;
-    transition: background 0.3s;
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center;
-  }
-  .why-card:hover { background: var(--navy-4); }
-  .why-num {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: rgba(45,122,58,0.15);
-    border: 1px solid rgba(79,217,98,0.25);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cinzel', serif;
-    font-size: 22px; font-weight: 700;
-    color: var(--green-glow);
-    margin-bottom: 24px;
-    box-shadow: 0 0 18px rgba(79,217,98,0.1);
-  }
-  .why-title {
-    font-family: 'Cinzel', serif;
-    font-size: 17px; font-weight: 600;
-    color: var(--white); margin-bottom: 14px;
-    letter-spacing: 0.5px;
-  }
-  .why-text {
-    font-size: 16px; line-height: 1.7;
-    color: var(--text);
-  }
-
-  /* ── PRICING ── */
-  #pricing { background: var(--navy); }
-  .pricing-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 2px; margin-top: 60px; align-items: stretch;
-  }
-  .price-card {
-    background: var(--navy-3);
-    padding: 28px 28px;
-    position: relative;
-    transition: transform 0.3s;
-    display: flex; flex-direction: column;
-  }
-  .price-card.featured {
-    background: var(--navy-4);
-    border: 1px solid rgba(45,122,58,0.35);
-    transform: translateY(-12px);
-  }
-  .price-card.featured::before {
-    content: 'MOST POPULAR';
-    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
-    background: var(--green);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px; letter-spacing: 2px; color: white;
-    padding: 6px 18px; white-space: nowrap;
-  }
-  .price-card.free-card::before { content: 'FREE'; }
-  .price-tier {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px; letter-spacing: 4px; color: var(--green-mid);
-    text-transform: uppercase; margin-bottom: 20px;
-  }
-  .price-name {
-    font-family: 'Cinzel', serif;
-    font-size: 22px; font-weight: 700;
-    color: var(--white); margin-bottom: 8px;
-  }
-  .price-best-for {
-    font-size: 16px; line-height: 1.65;
-    color: rgba(200,216,236,0.82);
-    margin: 0 0 16px 0;
-  }
-  .price-amt {
-    font-family: 'Cinzel', serif;
-    font-size: 42px; font-weight: 900;
-    color: var(--white); line-height: 1;
-    margin-bottom: 6px;
-  }
-  .price-amt sup { font-size: 22px; vertical-align: super; }
-  .price-period {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 13px; letter-spacing: 1.5px;
-    color: var(--text); margin-bottom: 32px;
-  }
-  .price-features { list-style: none; margin-bottom: 24px; }
-  .price-features li {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 16px; font-weight: 500; letter-spacing: 0.3px; line-height: 1.6;
-    color: var(--text); padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .price-features li::before {
-    content: '✓'; color: var(--green-mid);
-    font-size: 12px; flex-shrink: 0;
-    width: 16px; text-align: center;
-  }
-  .price-features li.na { display: none; }
-  .price-btn {
-    display: block; text-align: center;
-    background: transparent;
-    border: 1px solid rgba(45,122,58,0.35);
-    color: var(--text);
-    padding: 13px 24px;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 14px; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; text-decoration: none;
-    cursor: pointer; transition: all 0.3s;
-    margin-top: auto;
-  }
-  .price-btn:hover, .price-btn.active {
-    background: var(--green); border-color: var(--green);
-    color: white; box-shadow: 0 0 24px rgba(45,122,58,0.35);
-  }
-  /* Pricing three-tier layout: Individual (Basic + Pro) | Enterprise */
-  .pricing-cols {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    column-gap: 24px; row-gap: 26px; margin-top: 56px;
-    position: relative; align-items: stretch;
-  }
-  .pricing-cols::after {
-    content: ''; position: absolute; top: 0; bottom: 0;
-    left: calc(66.666% + 4px);
-    width: 1px;
-    background: linear-gradient(to bottom, rgba(200,216,236,0.28) 0, rgba(200,216,236,0.28) 100%);
-    pointer-events: none;
-  }
-  .pcol-header {
-    padding: 28px 40px;
-    background: var(--navy-4);
-    border-bottom: 3px solid transparent;
-  }
-  .ph-individual { grid-column: 1 / 3; border-bottom-color: var(--green); }
-  .ph-enterprise { grid-column: 3 / 4; border-bottom-color: var(--gold); }
-  .ptab-label {
-    font-family: 'Cinzel', serif;
-    font-size: 30px; font-weight: 700;
-    display: block; margin-bottom: 6px;
-  }
-  .ph-individual .ptab-label { color: var(--green-mid); }
-  .ph-enterprise .ptab-label { color: var(--gold); }
-  .ptab-sub {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 14px; font-weight: 600; letter-spacing: 1px;
-    color: var(--text-dim); display: block; margin-bottom: 5px;
-  }
-  .ptab-audience {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 13px; letter-spacing: 0.4px;
-    color: rgba(200,216,236,0.7); display: block;
-  }
-  /* Tier cards inside the pricing grid */
-  .pricing-cols .price-card { margin-bottom: 0; }
-  .pricing-cols .price-card.featured { transform: none; }
-  .pricing-cols .price-features { flex: 1; margin-bottom: 24px; }
-  .price-amount {
-    display: flex; align-items: baseline; gap: 8px;
-    margin-bottom: 18px;
-  }
-  .pa-num {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 20px; font-weight: 700; line-height: 1;
-    color: var(--white); letter-spacing: 0.5px;
-  }
-  .ent-card .pa-num { color: var(--gold); }
-  .pa-per {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 14px; font-weight: 600; letter-spacing: 0.5px;
-    color: rgba(200,216,236,0.6);
-  }
-  .price-features li.feat-all { color: var(--white); font-weight: 700; }
-  .price-features li.feat-all::before { content: '+'; font-weight: 700; }
-  .price-features li.feat-addon { color: rgba(200,216,236,0.9); }
-  .price-features li.feat-addon::before { content: '+'; color: var(--gold); font-weight: 700; }
-  .feat-addon-tag {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
-    color: var(--gold); border: 1px solid rgba(201,168,76,0.4);
-    padding: 2px 6px; border-radius: 2px; margin-left: 8px;
-    white-space: nowrap; vertical-align: middle;
-  }
-  @media (max-width: 900px) {
-    .pricing-cols { grid-template-columns: 1fr; row-gap: 22px; }
-    .pricing-cols::after { display: none; }
-    .ph-individual, .ph-enterprise { grid-column: 1 / -1; }
-    .ph-individual { order: 1; }
-    .price-card.free-card { order: 2; }
-    .pricing-cols .pro-card { order: 3; }
-    .ph-enterprise { order: 4; }
-    .pricing-cols .ent-card { order: 5; }
-  }
-
-  /* ── CLIENTS ── */
-  #clients { background: var(--navy-2); }
-  .clients-row {
-    display: flex; flex-wrap: wrap; gap: 2px;
-    margin-top: 60px;
-  }
-  .client-tag {
-    background: var(--navy-3);
-    border: 1px solid rgba(45,122,58,0.08);
-    padding: 10px 16px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 14px; letter-spacing: 1.5px;
-    color: var(--text); text-transform: uppercase;
-    transition: all 0.3s; cursor: default; flex: 1;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; min-width: 180px;
-  }
-  .client-tag:hover {
-    background: var(--navy-4);
-    color: var(--text);
-    border-color: rgba(45,122,58,0.25);
-  }
-
   /* ── CTA BANNER ── */
   .cta-banner {
     background: var(--navy-3);
@@ -1253,8 +1031,6 @@
     footer { padding: 48px 32px 28px; }
 
     .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-    .price-card { padding: 36px 24px; }
-    .price-amt { font-size: 36px; }
     .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
     .footer-brand { grid-column: 1 / -1; flex-direction: row; }
     .adv-grid { gap: 40px; }
@@ -1339,21 +1115,9 @@
     .footer-top { grid-template-columns: 1fr; gap: 28px; }
     .footer-brand { grid-column: auto; flex-direction: row; flex-wrap: wrap; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-
-    .price-card.featured { transform: none; }
     .pricing-grid { grid-template-columns: 1fr; }
-
-    .pricing-cols { grid-template-columns: 1fr; }
-    .pcol-header { padding: 20px 24px; }
-    .ptab-label { font-size: 22px; }
-    .ptab-audience { display: none; }
-
     .adv-grid { grid-template-columns: 1fr; gap: 36px; }
     .dash-body { grid-template-columns: 1fr; min-height: auto; }
-
-    .clients-row { flex-direction: column; }
-    .client-tag { min-width: unset; }
-
     .nav-toggle { display: flex; }
     .nav-links {
       display: none; position: fixed;
@@ -1381,8 +1145,6 @@
     .svc-buttons-outer { padding: 20px 0 0 28px; }
 
     /* Keep 2-col on tablets — drop to 1-col at 600px */
-    .why-grid { grid-template-columns: repeat(2, 1fr); }
-
     .footer-contact-btn { width: 100%; text-align: center; }
 
     /* Radar faded on tablets — keeps brand atmosphere */
@@ -1400,9 +1162,6 @@
 
   /* ── Small tablets / large phones (≤ 600px) ── */
   @media (max-width: 600px) {
-    /* Stack why-grid on smaller phones */
-    .why-grid { grid-template-columns: 1fr; }
-
     /* Tighten CTA actions */
     .cta-actions { flex-direction: column; align-items: stretch; }
     .cta-actions a { text-align: center; }
@@ -1449,17 +1208,7 @@
     .dash-body { grid-template-columns: 1fr; min-height: auto; }
     .dash-map { min-height: 240px; border-right: none; grid-row: auto; }
     .dash-bottom { flex-direction: column; gap: 8px; align-items: flex-start; padding: 12px 16px; }
-
-    .why-grid { grid-template-columns: 1fr; }
-    .why-card { padding: 24px 20px; }
-    .why-num { width: 44px; height: 44px; font-size: 18px; }
-    .why-title { font-size: 16px; }
-    .why-text { font-size: 16px; }
-
     .pricing-grid { grid-template-columns: 1fr; }
-    .price-card { padding: 32px 24px; }
-    .price-amt { font-size: 34px; }
-
     .adv-grid { grid-template-columns: 1fr; gap: 28px; }
     .adv-right { padding: 28px 20px; }
     .adv-list li { flex-direction: column; gap: 8px; }
@@ -1495,11 +1244,6 @@
       min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
     }
     .hero-tagline { font-size: 14px; letter-spacing: 1.5px; margin-bottom: 32px; }
-
-    .price-best-for { font-size: 16px; }
-    .price-features li { font-size: 16px; padding: 11px 0; word-break: break-word; hyphens: auto; }
-
-    .client-tag { font-size: 13px; letter-spacing: 1.5px; padding: 8px 12px; }
   }
 
   /* ── Extra small phones (≤ 360px) ── */
@@ -1543,7 +1287,6 @@
   @media (hover: none) and (pointer: coarse) {
     .service-card:hover { transform: none; }
     .btn-primary:hover { transform: none; }
-    .price-card.featured { transform: none; }
     /* Disable backdrop-filter on mobile — battery & rendering savings */
     nav { backdrop-filter: none; -webkit-backdrop-filter: none; }
   }
@@ -1573,7 +1316,7 @@
   /* Extra contrast ring for controls that sit on a green fill */
   .btn-primary:focus-visible,
   .btn-secondary.btn-green:focus-visible,
-  .price-btn.active:focus-visible {
+  .ent-card .btn-primary:focus-visible {
     outline-color: #fff;
   }
 
@@ -1647,6 +1390,61 @@
   /* .footer-col a wins on specificity over .btn-primary; restore button sizing/shape for the Contact CTA */
   .footer-col a.footer-contact-btn {
     display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
+  }
+
+
+  /* ── ENTERPRISE (condensed Why / Pricing / Who We Serve) ── */
+  #enterprise { background: var(--navy); position: relative; }
+  .anchor-alias { position: absolute; top: 0; }
+  .ent-grid {
+    display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: 56px; align-items: start; margin-top: 12px;
+  }
+  .ent-kicker {
+    font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--green-mid); margin: 0 0 12px;
+  }
+  .ent-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .ent-chips span {
+    font-size: 14px; font-weight: 600; letter-spacing: 1px; color: var(--white);
+    padding: 6px 12px; border: 1px solid var(--navy-4); background: var(--navy-2);
+  }
+  .ent-why { margin: 0; display: grid; gap: 4px 0; }
+  .ent-why dt { color: var(--white); font-weight: 700; font-size: 17px; margin-top: 12px; }
+  .ent-why dt:first-child { margin-top: 0; }
+  .ent-why dd { margin: 0; color: var(--text-dim); font-size: 16px; line-height: 1.6; }
+  .ent-card {
+    background: var(--navy-2); border: 1px solid rgba(201,168,76,0.4);
+    border-top: 3px solid var(--gold); padding: 32px;
+  }
+  .ent-card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+  .ent-card-name { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 700; color: var(--white); }
+  .ent-card-price { font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 1px; color: var(--gold); }
+  .ent-features { list-style: none; margin: 0 0 28px; padding: 0; }
+  .ent-features li {
+    position: relative; padding: 10px 0 10px 22px; font-size: 16px; line-height: 1.5;
+    color: var(--text-dim); border-bottom: 1px solid var(--navy-4);
+  }
+  .ent-features li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .ent-addon span {
+    font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.45); padding: 1px 6px; margin-left: 6px;
+  }
+  .ent-card-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .ent-individual {
+    margin: 40px 0 0; padding-top: 20px; border-top: 1px solid var(--navy-4);
+    display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; color: var(--text-dim);
+  }
+  .ent-individual strong { color: var(--white); }
+  .ent-individual b { color: var(--white); font-weight: 600; }
+  .ent-individual a { color: var(--green-mid); font-weight: 700; text-decoration: none; }
+  .ent-individual a:hover { color: var(--green-glow); }
+  @media (max-width: 1024px) {
+    .ent-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+  @media (max-width: 480px) {
+    .ent-card { padding: 24px 20px; }
+    .ent-card-ctas a { flex: 1 1 100%; text-align: center; }
   }
 
   /* ══ REDESIGN 2026-11 — critical-infrastructure landing ══ */
@@ -1843,8 +1641,7 @@
       </div>
     </div>
     <a href="#methodology" data-i18n="nav.methodology" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Methodology</a>
-    <a href="#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
-    <a href="#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
+    <a href="#enterprise" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Enterprise</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
       <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
@@ -2164,39 +1961,7 @@
   </div>
   <div style="margin-top:40px; display:flex; justify-content:center; align-items:center; gap:16px; flex-wrap:wrap;">
     <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer" style="padding:18px 56px; font-size:15px; letter-spacing:3px;">Launch Terminal</a>
-    <a href="#pricing" class="btn-secondary" data-i18n="plat.explore.btn" style="padding:18px 56px; font-size:15px; letter-spacing:3px;">Explore Subscriptions</a>
-  </div>
-</section>
-
-<!-- WHY SENTINELLA -->
-<section id="why">
-  <div class="section-label" data-i18n="why.label">Why Sentinella Mare</div>
-  <h2 data-i18n="why.h2" data-i18n-html="true">Why <br><span>Sentinella Mare</span></h2>
-  <p class="section-lead">
-    <span data-i18n="why.lead">We are a technology-enabled intelligence company — not a report provider. Every signal we deliver is actionable, contextual, and ahead of disruption.</span>
-  </p>
-
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-num">1</div>
-      <div class="why-title" data-i18n="why.c1.title">Predictive, Not Reactive</div>
-      <p class="why-text" data-i18n="why.c1.text">We turn geopolitical, cyber, military, and environmental signals into early-warning triggers — before risk reaches the headlines.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">2</div>
-      <div class="why-title" data-i18n="why.c2.title">Mediterranean-Native</div>
-      <p class="why-text" data-i18n="why.c2.text">We're embedded in the port communities and institutional networks that global firms can't replicate from a distance.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">3</div>
-      <div class="why-title" data-i18n="why.c3.title">Proprietary Intelligence Engine</div>
-      <p class="why-text" data-i18n="why.c3.text">A purpose-built AI trained on maritime risk — not a generic wrapper — detects patterns across shipping, naval activity, infrastructure, and energy corridors.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">4</div>
-      <div class="why-title" data-i18n="why.c5.title">Intelligence You Can Read</div>
-      <p class="why-text" data-i18n="why.c5.text">Our Intelligence Briefings translate what's moving in the basin — incidents, regulatory shifts, hybrid-threat patterns — into plain-language analysis.</p>
-    </div>
+    <a href="#enterprise" class="btn-secondary" style="padding:18px 56px; font-size:15px; letter-spacing:3px;">Enterprise</a>
   </div>
 </section>
 
@@ -2208,94 +1973,60 @@
   <a href="https://sentinellamare.substack.com/" class="btn-secondary" data-i18n="s2.cta" data-i18n-html="true" target="_blank" rel="noopener noreferrer">Read the Briefings <span>→</span></a>
 </section>
 
-<!-- PRICING -->
-<section id="pricing">
-  <div class="section-label" data-i18n="pricing.label">Subscription Platform</div>
-  <h2 data-i18n="pricing.h2" data-i18n-html="true"><span>Mediterranean Watch</span> <br>Subscription Tiers</h2>
-  <p class="section-lead" data-i18n="pricing.lead">Three tiers — from a free live Alert Center to Enterprise-grade deep simulation and compliance reporting — built for the moments that can't go wrong.</p>
+<!-- ENTERPRISE (replaces Why / Pricing / Who We Serve) -->
+<section id="enterprise">
+  <span id="pricing" class="anchor-alias"></span><span id="clients" class="anchor-alias"></span>
+  <div class="section-label">Enterprise</div>
+  <h2>Built for the operators <br><span>NIS2 and CER name.</span></h2>
 
-  <!-- Pricing three-tier layout -->
-  <div class="pricing-cols">
+  <div class="ent-grid">
+    <div class="ent-copy">
+      <p class="ent-kicker">Who we serve</p>
+      <div class="ent-chips">
+        <span>Port Authorities (AdSP)</span>
+        <span>PFSO Licence Holders</span>
+        <span>Subsea Cable Operators</span>
+        <span>Terminal &amp; Energy Operators</span>
+        <span>Ferry &amp; Ro-Ro Operators</span>
+        <span>Government Agencies</span>
+      </div>
 
-    <!-- Column-group headers -->
-    <div class="pcol-header ph-individual">
-      <span class="ptab-label">Individual</span>
-      <span class="ptab-sub">Analysts &amp; Professional Users</span>
-      <span class="ptab-audience">Individual operators · analysts · shipping, logistics &amp; cruise planners · researchers</span>
+      <p class="ent-kicker">Why Sentinella</p>
+      <dl class="ent-why">
+        <dt>A methodology you can show an auditor.</dt>
+        <dd>Every score is four cited pillars with a source tier and retrieval date, regression-tested against published validation ports.</dd>
+        <dt>Mediterranean-native.</dt>
+        <dd>Embedded in the port communities and institutions that generalist platforms cover from a distance.</dd>
+        <dt>Your estate, your sensors.</dt>
+        <dd>Your own ports, cables and hardware feeds scored individually and rolled into one portfolio view.</dd>
+      </dl>
     </div>
-    <div class="pcol-header ph-enterprise">
-      <span class="ptab-label">Enterprise</span>
-      <span class="ptab-sub">Institutions &amp; Commercial Operators</span>
-      <span class="ptab-audience">Government · large fleet operators · ports · cable operators · insurers</span>
-    </div>
 
-    <!-- Basic -->
-    <div class="price-card featured free-card">
-      <div class="price-name">Basic</div>
-      <div class="price-amount"><span class="pa-num">0 €</span></div>
-      <p class="price-best-for">The live Alert Center — real-time maritime threat monitoring for anyone watching the basin.</p>
-      <ul class="price-features">
-        <li>Alert Center — live intelligence feed with trade &amp; hybrid-threat alerts</li>
-        <li>Port Status Board — live CAS scoring &amp; 72-hour trends</li>
-        <li>Port surveillance dock — live cameras + AIS mini-map</li>
-        <li>Dark-vessel detections &amp; route corridor risk</li>
-        <li>Threat convergence detection</li>
-        <li>MARIA AI assistant — limited daily quota</li>
+    <div class="ent-card">
+      <div class="ent-card-head">
+        <span class="ent-card-name">Enterprise</span>
+        <span class="ent-card-price">Custom pricing</span>
+      </div>
+      <ul class="ent-features">
+        <li>My Assets — your portfolio scored on your own sensor feeds</li>
+        <li>NIS2 / CER / Circ. 177 compliance reports — per-asset PDF/A exports</li>
+        <li>Deep simulation — multi-agent hybrid-threat scenarios for your port and region</li>
+        <li>Response plans on the J3/J35 framework</li>
+        <li>SSO, team seats, priority support &amp; SLA</li>
+        <li class="ent-addon">API access, custom feeds &amp; integrations <span>Add-on</span></li>
       </ul>
-      <a href="https://mare.sentinellaglobal.com/" class="price-btn active" target="_blank" rel="noopener noreferrer">Launch Now</a>
+      <div class="ent-card-ctas">
+        <a href="https://tally.so/r/WOloya" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Walkthrough</a>
+        <a href="mailto:james@sentinellaglobal.com" class="btn-secondary">Contact Us</a>
+      </div>
     </div>
-
-    <!-- Pro -->
-    <div class="price-card pro-card">
-      <div class="price-name">Pro</div>
-      <div class="price-amount"><span class="pa-num">19,99 €</span><span class="pa-per">/ month</span></div>
-      <p class="price-best-for">The full operational picture for professional shipping, logistics, and cruise planners.</p>
-      <ul class="price-features">
-        <li class="feat-all">Everything in Basic</li>
-        <li>MARIA unlimited — voice + chat with full dashboard context</li>
-        <li>Operations Map — layered asset, threat &amp; weather picture in 2D or 3D</li>
-        <li>Live asset intel feed with geolocated map markers</li>
-        <li>Vessel movement replay &amp; vessel risk profiles</li>
-        <li>Scenario Simulator — natural-language what-if modelling &amp; impact projections</li>
-      </ul>
-      <a href="https://tally.so/r/WOloya" class="price-btn" target="_blank" rel="noopener noreferrer">Request Access</a>
-    </div>
-
-    <!-- Enterprise -->
-    <div class="price-card ent-card">
-      <div class="price-name">Enterprise</div>
-      <div class="price-amount"><span class="pa-num">Custom pricing</span></div>
-      <p class="price-best-for">Tailored deployments for institutions, government, and large fleet operators.</p>
-      <ul class="price-features">
-        <li class="feat-all">Everything in Pro</li>
-        <li>Deep Simulation — multi-agent scenario modelling, society graph &amp; agent interviews</li>
-        <li>Security &amp; compliance reporting — PDF exports incl. NIS2 / CER</li>
-        <li>Response plans — J3/J35 framework</li>
-        <li>SSO &amp; team seats</li>
-        <li>Priority support &amp; SLA</li>
-        <li class="feat-addon">API access, custom feeds &amp; integrations <span class="feat-addon-tag">Add-on</span></li>
-      </ul>
-      <a href="mailto:james@sentinellaglobal.com" class="price-btn">Contact Us</a>
-    </div>
-
   </div>
 
-</section>
-
-<!-- CLIENTS -->
-<section id="clients">
-  <div class="section-label" data-i18n="clients.label">Who We Serve</div>
-  <h2 data-i18n="clients.h2" data-i18n-html="true">Who <br><span>We Serve</span></h2>
-  <div class="clients-row" style="margin-top:60px;">
-    <div class="client-tag">Port Authorities (AdSP)</div>
-    <div class="client-tag">PFSO Licence Holders</div>
-    <div class="client-tag">Subsea Cable Operators</div>
-    <div class="client-tag">Terminal &amp; Energy Operators</div>
-    <div class="client-tag">Ferry &amp; Ro-Ro Operators</div>
-    <div class="client-tag" data-i18n="client.10">Government Agencies</div>
-    <div class="client-tag" data-i18n="client.5">Marine Insurers</div>
-    <div class="client-tag" data-i18n="client.4">Logistics Firms</div>
-  </div>
+  <p class="ent-individual">
+    <strong>Individual analyst?</strong>
+    <span><b>Basic</b> is free — the live Alert Center. <a href="https://mare.sentinellaglobal.com/" target="_blank" rel="noopener noreferrer">Launch&nbsp;now&nbsp;→</a></span>
+    <span><b>Pro</b> is 19,99&nbsp;€/month — Ops Map, unlimited Maria, Scenario Simulator. <a href="https://tally.so/r/WOloya" target="_blank" rel="noopener noreferrer">Request&nbsp;access&nbsp;→</a></span>
+  </p>
 </section>
 
 <!-- CTA BANNER -->
@@ -2305,8 +2036,8 @@
     <p data-i18n="cta2.p">See your ports and cables scored, or book a walkthrough of the NIS2 and CER mapping.</p>
   </div>
   <div class="cta-actions">
-    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer">Launch Terminal</a>
-    <a href="https://tally.so/r/WOloya" class="btn-primary" data-i18n="cta.btn1" target="_blank" rel="noopener noreferrer">Request Platform Demo</a>
+    <a href="https://tally.so/r/WOloya" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Walkthrough</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-secondary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer">Launch Terminal</a>
   </div>
 </div>
 
@@ -2354,7 +2085,7 @@
       <a href="#convergence">Convergence Alerts</a>
       <a href="#simulations">Hybrid-Threat Simulations</a>
       <a href="#briefings" data-i18n="footer.l.briefings">Intelligence Briefings</a>
-      <a href="#pricing" data-i18n="footer.l.tiers">Subscription Tiers</a>
+      <a href="#enterprise">Enterprise</a>
     </div>
     <div class="footer-col">
       <p class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</p>
