@@ -1709,6 +1709,14 @@
     width: 100%; height: auto; display: block; border-radius: 4px;
     border: 1px solid var(--navy-4); box-shadow: 0 8px 48px rgba(0,0,0,0.6);
   }
+  .media-inset { position: relative; }
+  .media-inset .inset {
+    position: absolute; left: -28px; bottom: 34px; width: 46%;
+    border: 1px solid var(--gold);
+  }
+  @media (max-width: 1024px) {
+    .media-inset .inset { position: static; width: 70%; margin-top: 12px; }
+  }
   .feature-media figcaption {
     font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1px;
     color: var(--text-dim); margin-top: 10px;
@@ -1973,20 +1981,16 @@
     <h2>When unrelated signals <span>meet at one asset</span></h2>
     <p class="section-lead">A dark vessel is common. GPS interference is common. A dark vessel, a spoofed track and a jamming cell beside the same cable landing in the same hour is not. MARE watches for signals of different kinds clustering near one asset and raises a convergence alert when they do.</p>
     <ul class="feature-points">
-      <li><strong>Every constituent shown.</strong> Open the alert to see each signal, its age, and how far from the asset it actually sits.</li>
-      <li><strong>Built from independent sources.</strong> AIS gaps, spoofed tracks, GNSS interference, cable loiters, seismic and conflict events.</li>
+      <li><strong>Every constituent shown.</strong> Open the alert to see each signal, where it sits, its source and that source's credibility tier.</li>
+      <li><strong>Built from independent sources.</strong> AIS gaps, spoofed tracks, GNSS interference, cable loiters, seismic and conflict events, and intel reports.</li>
       <li><strong>Read as a prompt, not a verdict.</strong> Convergence tells your team where to look first — it is not a confirmed attack, and MARE never presents it as one.</li>
     </ul>
     <a class="text-link" href="https://mare.sentinellaglobal.com/" target="_blank" rel="noopener noreferrer">See live alerts in the Alert Center →</a>
   </div>
-    <figure class="feature-media">
-      <!-- CAPTURE PENDING: replace this div with an <img>, or with
-           <video src="…mp4" poster="…png" autoplay muted loop playsinline></video> -->
-      <div class="media-pending" role="img" aria-label="Convergence Alerts screen capture coming soon">
-        <strong>Convergence Alerts</strong>
-        <span>Screen capture coming soon</span>
-        <span>Ops Map · convergence ring opened on a port or cable</span>
-      </div>
+    <figure class="feature-media media-inset">
+      <img src="Convergence_Alert_Panel.png" alt="The Ops Map with a convergence ring over Barcelona and its alert panel open: two threat types, cyber and illicit, each listed with its headline, location, source and credibility tier, plus the location's earlier history." loading="lazy" decoding="async">
+      <img class="inset" src="Convergence_Alert_Tooltip.png" alt="Hover card on the Barcelona convergence ring: 2 threat types, 2 signals, strength 70, cyber and illicit, click to see what caused it." loading="lazy" decoding="async">
+      <figcaption>Barcelona · two threat types converging · every constituent cites its source</figcaption>
     </figure>
 </section>
 
