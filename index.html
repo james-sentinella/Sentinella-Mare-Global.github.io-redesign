@@ -413,12 +413,6 @@
   .reg-deadline-link:hover { color: var(--green-glow); }
 
   /* ── SERVICES ── */
-  #services { background: var(--navy-2); position: relative; overflow: hidden; }
-  #services::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(45,122,58,0.4), transparent);
-  }
   .services-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 2px; margin-top: 60px;
@@ -522,7 +516,7 @@
   .svc-cta .coming-soon-tag { font-size: 12px; margin-left: 2px; }
 
   /* ── DASHBOARD MOCKUP ── */
-  #methodology { background: var(--navy-2); position: relative; overflow: hidden; }
+  #methodology { background: var(--navy); position: relative; overflow: hidden; }
 
   /* ── MHTES METHODOLOGY TABLE ── */
   .mhtes-wrap {
@@ -1393,8 +1387,29 @@
   }
 
 
+
+  /* Methodology drilldown */
+  .meth-drill { margin-top: 8px; }
+  .meth-drill > summary {
+    list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 24px; border: 1px solid var(--green); color: var(--green-mid);
+    font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    transition: background .25s, color .25s;
+  }
+  .meth-drill > summary::-webkit-details-marker { display: none; }
+  .meth-drill > summary:hover { background: var(--green); color: #fff; }
+  .meth-drill > summary svg { transition: transform .25s; }
+  .meth-drill[open] > summary svg { transform: rotate(180deg); }
+  .meth-drill .meth-drill-close, .meth-drill[open] .meth-drill-open { display: none; }
+  .meth-drill[open] .meth-drill-close { display: inline; }
+  .meth-drill-body { padding-top: 36px; }
+  /* Briefings in the footer */
+  .footer-briefings p:not(.footer-nav-title) { line-height: 1.6; }
+  .footer-col a.footer-briefings-link { color: var(--gold); font-weight: 700; margin-bottom: 20px; }
+  .footer-col a.footer-briefings-link:hover { color: var(--white); }
+
   /* ── ENTERPRISE (condensed Why / Pricing / Who We Serve) ── */
-  #enterprise { background: var(--navy); position: relative; }
+  #enterprise { background: var(--navy-2); position: relative; }
   .anchor-alias { position: absolute; top: 0; }
   .ent-grid {
     display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
@@ -1484,8 +1499,9 @@
     border-top: 1px solid rgba(45,122,58,0.18);
   }
   .feature.flip .feature-copy { order: 2; }
-  #ports, #convergence, #briefings { background: var(--navy-2); }
+  #ports, #convergence, #my-assets { background: var(--navy-2); }
   #cables, #simulations { background: var(--navy); }
+  .feature { position: relative; }
   .feature h2 { margin-bottom: 16px; }
   .feature .section-lead { margin-bottom: 20px; }
   .feature-points { list-style: none; margin: 0 0 24px; display: grid; gap: 10px; }
@@ -1634,6 +1650,10 @@
           Hybrid-Threat Simulations
           <span class="comp-link-label">Rehearse your worst day</span>
         </a>
+        <a href="#my-assets" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          My Assets
+          <span class="comp-link-label">Your estate, your sensor feeds</span>
+        </a>
         <a href="#briefings" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
           Intelligence Briefings
           <span class="comp-link-label">Subscriber newsletter</span>
@@ -1676,7 +1696,7 @@
         <button class="lang-btn" onclick="setLang('el'); document.getElementById('langDropdown').classList.remove('open')" id="btn-el">EL</button>
       </div>
     </div>
-    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="nav.cta" style="padding:8px 20px;font-size:13px;letter-spacing:1.5px;white-space:nowrap;" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="nav.cta" style="padding:8px 20px;font-size:13px;letter-spacing:1.5px;white-space:nowrap;" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Platform</a>
   </div>
 </nav>
 
@@ -1704,7 +1724,7 @@
   </div>
 
   <div class="hero-content">
-    <div class="hero-tag" data-i18n="hero2.tag">MARITIME CRITICAL INFRASTRUCTURE · HQ: Brussels, Belgium</div>
+    <div class="hero-tag" data-i18n="hero2.tag">HQ: Brussels, Belgium</div>
     <h1>
       <span class="sr-only">Protecting European Maritime Critical Infrastructure, one port, one cable at a time</span>
       <span aria-hidden="true">Protecting European Maritime Critical Infrastructure,
@@ -1715,7 +1735,8 @@
     </p>
     <div class="hero-ctas">
       <a href="#ports" class="btn-primary" data-i18n="hero2.btn1">See How MARE Protects Ports</a>
-      <a href="#methodology" class="btn-secondary btn-green" data-i18n="hero2.btn2">NIS2 &amp; CER Mapping</a>
+      <a href="#cables" class="btn-primary" data-i18n="hero2.btn3">See How MARE Protects Cables</a>
+      <a href="#methodology" class="btn-secondary" data-i18n="hero2.btn2">NIS2 &amp; CER Mapping</a>
     </div>
   </div>
 
@@ -1739,6 +1760,7 @@
 
 <!-- PORTS -->
 <section id="ports" class="feature">
+  <span id="services" class="anchor-alias"></span><span id="platform" class="anchor-alias"></span>
   <div class="feature-copy">
     <div class="section-label">Ports · P-MHTES</div>
     <h2>Every port, scored on <span>what it exposes</span></h2>
@@ -1836,10 +1858,37 @@
     </figure>
 </section>
 
+<!-- MY ASSETS -->
+<section id="my-assets" class="feature">
+  <div class="feature-copy">
+    <div class="section-label">My Assets · Enterprise</div>
+    <h2>Your assets, scored on <span>your own sensor data</span></h2>
+    <p class="section-lead">Enterprise clients stream their own hardware sensor feeds into a personalised panel scoped to their assets — every port and cable scored individually and rolled into one portfolio-wide view, with your tracked vessels alongside.</p>
+    <ul class="feature-points">
+      <li><strong>One portfolio score.</strong> A single gauge for your whole estate, with its 72-hour trend.</li>
+      <li><strong>Every asset explained.</strong> Each score sits beside the facts behind it — tonnage, energy handling, cable landings.</li>
+      <li><strong>Honest about confidence.</strong> Validated scores are marked as validated; provisional estimates say so.</li>
+    </ul>
+    <a class="text-link" href="#enterprise">Included in Enterprise →</a>
+  </div>
+  <figure class="feature-media">
+    <img src="Enterprise_My_Assets.png" alt="The My Assets panel for an Enterprise customer's estate of eight Sardinian ports: a portfolio gauge at 2.41, a 72-hour trend, and each port's P-MHTES score with a short description, from Cagliari at 3.75 down to Santa Teresa di Gallura at 1.75." loading="lazy" decoding="async">
+    <figcaption>Customer estate · 8 ports, 2 cables, 5 vessels</figcaption>
+  </figure>
+</section>
+
 <!-- METHODOLOGY -->
 <section id="methodology">
   <div class="section-label" data-i18n="meth.label">The Methodology</div>
   <h2 data-i18n="meth.h2" data-i18n-html="true">One methodology. <br><span>Mapped to NIS2 and CER.</span></h2>
+  <p class="section-lead">Every MARE score is four equally weighted, cited pillars — and each pillar lines up with what NIS2 and the CER Directive ask you to assess.</p>
+  <details class="meth-drill" id="methodologyDrill">
+    <summary>
+      <span class="meth-drill-open">Open the methodology &amp; NIS2/CER mapping</span>
+      <span class="meth-drill-close">Close the methodology</span>
+      <svg width="12" height="7" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </summary>
+    <div class="meth-drill-body">
   <p class="platform-img-caption"><strong data-i18n="mhtes.headline">Your risk, distilled to one number.</strong></p>
   <div class="mhtes-summary">
     <div class="mhtes-gauge" aria-hidden="true">
@@ -1868,7 +1917,7 @@
   </div>
   <details class="mhtes-details">
     <summary data-i18n="mhtes.toggle">
-      See the methodology
+      Pillars by asset class
       <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -1960,22 +2009,16 @@
     </div>
   </div>
   <div style="margin-top:40px; display:flex; justify-content:center; align-items:center; gap:16px; flex-wrap:wrap;">
-    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer" style="padding:18px 56px; font-size:15px; letter-spacing:3px;">Launch Terminal</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer" style="padding:18px 56px; font-size:15px; letter-spacing:3px;">Launch Platform</a>
     <a href="#enterprise" class="btn-secondary" style="padding:18px 56px; font-size:15px; letter-spacing:3px;">Enterprise</a>
   </div>
-</section>
-
-<!-- BRIEFINGS -->
-<section id="briefings">
-  <div class="section-label" data-i18n="s2.tagline">Subscriber Newsletter</div>
-  <h2 data-i18n="s2.title" data-i18n-html="true">Intelligence<br><span>Briefings</span></h2>
-  <p class="section-lead" data-i18n="s2.desc">We publish briefings on what's moving in the Mediterranean: the incidents, regulatory shifts, and hybrid-threat patterns our analysts are tracking in real time. Plain-language reads for operators, compliance teams, and anyone who needs to understand the basin without watching it full-time.</p>
-  <a href="https://sentinellamare.substack.com/" class="btn-secondary" data-i18n="s2.cta" data-i18n-html="true" target="_blank" rel="noopener noreferrer">Read the Briefings <span>→</span></a>
+    </div>
+  </details>
 </section>
 
 <!-- ENTERPRISE (replaces Why / Pricing / Who We Serve) -->
 <section id="enterprise">
-  <span id="pricing" class="anchor-alias"></span><span id="clients" class="anchor-alias"></span>
+  <span id="pricing" class="anchor-alias"></span><span id="clients" class="anchor-alias"></span><span id="why" class="anchor-alias"></span>
   <div class="section-label">Enterprise</div>
   <h2>Built for the operators <br><span>NIS2 and CER name.</span></h2>
 
@@ -2037,7 +2080,7 @@
   </div>
   <div class="cta-actions">
     <a href="https://tally.so/r/WOloya" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Walkthrough</a>
-    <a href="https://mare.sentinellaglobal.com/" class="btn-secondary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer">Launch Terminal</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-secondary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer">Launch Platform</a>
   </div>
 </div>
 
@@ -2068,6 +2111,21 @@
   });
 })();
 </script>
+<script>
+// Any link to #methodology (hero button, nav, a shared URL) opens the drilldown
+// so it never lands on a closed box.
+(function () {
+  var d = document.getElementById('methodologyDrill');
+  if (!d) return;
+  function check() { if (location.hash === '#methodology') d.open = true; }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#methodology"]');
+    if (a) d.open = true;
+  });
+  window.addEventListener('hashchange', check);
+  check();
+})();
+</script>
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -2084,7 +2142,7 @@
       <a href="#cables">Subsea Cables</a>
       <a href="#convergence">Convergence Alerts</a>
       <a href="#simulations">Hybrid-Threat Simulations</a>
-      <a href="#briefings" data-i18n="footer.l.briefings">Intelligence Briefings</a>
+      <a href="#my-assets">My Assets</a>
       <a href="#enterprise">Enterprise</a>
     </div>
     <div class="footer-col">
@@ -2095,7 +2153,10 @@
       <p data-i18n="footer.geo.4">Adriatic Sea</p>
       <p data-i18n="footer.geo.5">Eastern Mediterranean</p>
     </div>
-    <div class="footer-col">
+    <div class="footer-col footer-briefings" id="briefings">
+      <p class="footer-nav-title">Intelligence Briefings</p>
+      <p>Field notes from the basin — incidents, regulatory shifts and hybrid-threat patterns, in plain language.</p>
+      <a href="https://sentinellamare.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-briefings-link">Read the Briefings →</a>
       <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn" data-i18n="footer.h.contact">Contact</a>
     </div>
     </div>
@@ -2117,55 +2178,15 @@
 const translations = {
   en: {
     // Nav
-    'nav.services': 'Services',
-    'nav.platform': 'Live Platform',
-    'nav.pricing': 'Pricing',
-    'nav.clients': 'Clients',
-    'nav.cta': 'Launch Terminal',
+    'nav.cta': 'Launch Platform',
     // Hero
-    'hero.tag': 'MARITIME HYBRID THREAT INTELLIGENCE PLATFORM · HQ: Brussels, Belgium',
-    'hero.h1': 'Intelligence That <br>Moves <span>Before</span> <br>Disruption Does',
-    'hero.desc': 'One score for Mediterranean hybrid-threat exposure across ports, fleets, and cables, refreshed continuously and built for EU compliance.',
-    'hero.btn1': 'View Live Platform',
-    'launch.btn': 'Launch Terminal',
-    'plat.explore.btn': 'Explore Subscriptions',
-    'hero.btn2': 'Our Services',
+    'launch.btn': 'Launch Platform',
     // Services
-    'services.label': 'Core Services',
-    'services.h2': 'One Platform. <br><span>Sharper Intelligence.</span>',
-    'services.lead': "Real-time geospatial intelligence and intelligence briefings to make sense of it all — a live platform and curated analysis, built for operators across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses strategic importance, geopolitical exposure, grey-zone activity, and cyber vulnerability signals into a single actionable risk metric per asset.",
-    'services.callout': '<strong>Aligned with European Maritime Regulation:</strong> MHTES delivers the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy\'s Circular 177/2025 are increasingly oriented toward — built for operators preparing for the November 2026 convergence of these frameworks.',
-    's1.tagline': "Live Intelligence Platform",
-    's1.title': 'Mediterranean Watch<br>Intelligence Terminal',
-    's1.sub': "One platform, one scored picture — showing how hybrid threats hit both security and trade at once.",
-    's1.launch': "Launch Terminal <span>→</span>",
-    's2.sub': "Field notes from the basin — curated analysis, straight from our team.",
-    'footer.l.briefings': "Intelligence Briefings",
-    's1.desc': "The Intelligence Terminal doesn't separate operational risk from economic risk, because the Mediterranean doesn't either. One event — a dark vessel off Sicily, a cyber probe on a port, a disruption at Suez — shows up in a single scored picture, with forecasting powered by Maria, our maritime AI.",
-    's1.cta': 'View Subscription Plans <span>→</span>',
-    's1.f1': "Real-time vessel tracking and per-corridor threat scoring — Gibraltar to Suez",
-    's1.f2': "Cross-domain alerts: cyber, military, disinformation, weather, port disruption",
-    's1.f3': "Supply-chain stress-testing across Mediterranean chokepoints",
-    's1.f4': "Automated early-warning triggers with priority notification",
-    's2.tagline': "Subscriber Newsletter",
-    's2.title': "Intelligence<br>Briefings",
-    's2.flead': "Briefings include:",
-    's2.f1': "Incident analysis — what happened in the basin and why it matters",
-    's2.f2': "Regulatory watch — NIS2, CER, and Circular 177/2025 developments",
-    's2.f3': "Hybrid-threat patterns our analysts are tracking in real time",
-    's2.desc': "We publish briefings on what's moving in the Mediterranean: the incidents, regulatory shifts, and hybrid-threat patterns our analysts are tracking in real time. Plain-language reads for operators, compliance teams, and anyone who needs to understand the basin without watching it full-time.",
-    's2.cta': "Read the Briefings <span>→</span>",
     // Live status bar
     'live.feed': 'LIVE PORT SURVEILLANCE CAMS',
     'live.vessels': 'VESSELS TRACKED',
     'live.traffic': 'MARINE TRAFFIC — MEDITERRANEAN LIVE',
     // Platform
-    'platform.label': 'Live Intelligence Platform',
-    'plat.h2': 'The <span>Mediterranean Watch</span> <br>Intelligence Terminal',
-    'plat.opsmap.headline': "One map. Every layer of risk.",
-    'plat.opsmap.text': "Ports, cables, vessels, weather, and live intel feeds on one Mediterranean map — filterable by risk level, with AI-flagged threat convergence, vessel movement replay, and the full score breakdown behind any asset you click into.",
-    'plat.myassets.headline': "Your assets, scored on your own sensor data.",
-    'plat.myassets.text': "Enterprise clients stream their own hardware sensor feeds into a personalized panel scoped to their assets — every port, cable, and vessel scored individually, rolled into one portfolio-wide view.",
     'mhtes.headline': "Your risk, distilled to one number.",
     'mhtes.sum.strong': "One score per asset, refreshed continuously.",
     'mhtes.sum.text': "MHTES combines strategic importance, geopolitical exposure, grey-zone activity, and cyber vulnerability signals into a single number you can act on — 72 hours before disruption hits.",
@@ -2176,125 +2197,16 @@ const translations = {
     'mhtes.toggle': "See the methodology",
     'mhtes.gauge.label': "Moderate",
     'mhtes.api': "Pipe it directly into your own platforms via API.",
-    'plat.lead': 'Our subscriber intelligence terminal delivers continuous situational awareness across the full Mediterranean basin — from Strait of Gibraltar to the Eastern Mediterranean.',
-    'plat.chrome.title': '// SENTINELLA MARE · LIVE OPERATIONS',
-    'plat.chrome.status': 'ALL SYSTEMS NOMINAL',
-    'plat.threat.title': '// Active Threat Signals',
-    'plat.threat.1': 'Naval activity surge detected',
-    'plat.threat.1z': 'W. MED · CONFIDENCE 87%',
-    'plat.threat.2': 'Port congestion — delay risk',
-    'plat.threat.2z': 'ALGIERS · CONFIDENCE 73%',
-    'plat.threat.3': 'Cyber probe on AIS network',
-    'plat.threat.3z': 'ADRIATIC · CONFIDENCE 68%',
-    'plat.threat.4': "Weather routing guidance",
-    'plat.threat.4z': 'TYRRHENIAN · CONFIDENCE 94%',
-    'plat.metrics.title': '// Basin Metrics',
-    'plat.metrics.vessels': 'Vessels Live',
-    'plat.metrics.alerts': 'Active Alerts',
-    'plat.metrics.risk': 'W.Med Risk',
-    'plat.metrics.ais': 'AIS Coverage',
-    'plat.bottom.feeds': 'FEEDS: AIS · SIGINT · OSINT · SOCIAL · CYBER · NAVAL',
-    'plat.bottom.latency': 'DATA LATENCY: <90s',
-    'plat.bottom.coverage': 'COVERAGE: 36 NATION-STATES',
-    'plat.map.alert': 'ACTIVE THREAT · WEST MED CORRIDOR',
-    'plat.map.gibraltar': 'STRAIT OF GIBRALTAR',
-    'plat.map.africa': 'N. AFRICA CORRIDOR',
-    'plat.map.eastern': 'EASTERN MED',
-    'plat.map.sicily': 'STRAIT OF SICILY',
     // Why
-    'why.label': 'Why Sentinella Mare',
-    'why.h2': "Why <br><span>Sentinella Mare</span>",
-    'why.lead': 'We are a technology-enabled intelligence company — not a report provider. Every signal we deliver is actionable, contextual, and ahead of disruption.',
-    'why.c1.title': 'Predictive, Not Reactive',
-    'why.c1.text': "We turn geopolitical, cyber, military, and environmental signals into early-warning triggers — before risk reaches the headlines.",
-    'why.c2.title': 'Mediterranean-Native Expertise',
-    'why.c2.text': "We're embedded in the port communities and institutional networks that global firms can't replicate from a distance.",
-    'why.c3.title': 'Proprietary Intelligence Engine',
-    'why.c3.text': "A purpose-built AI trained on maritime risk — not a generic wrapper — detects patterns across shipping, naval activity, infrastructure, and energy corridors.",
-    'why.c4.title': 'Subscription Efficiency',
-    'why.c4.text': 'Tiered subscription model delivers continuous intelligence value — no hourly billing, no retainer uncertainty. You pay for persistent awareness, not episodic reports that age on arrival.',
-    'why.c5.title': 'Intelligence You Can Read',
-    'why.c5.text': "Our Intelligence Briefings translate what's moving in the basin — incidents, regulatory shifts, hybrid-threat patterns — into plain-language analysis.",
-    'why.c6.title': 'Scalable Coverage',
-    'why.c6.text': 'Beginning with the Sardinian maritime corridor and scaling outward across Western Mediterranean shipping lanes, Adriatic, Tyrrhenian, and Eastern Mediterranean as client base expands.',
     // Pricing
-    'pricing.label': 'Subscription Platform',
-    'pricing.h2': '<span>Mediterranean Watch</span> <br>Subscription Tiers',
-    'pricing.lead': "Three tiers — from a free live Alert Center to Enterprise-grade deep simulation and compliance reporting — built for the moments that can't go wrong.",
-    'pricing.tab.port': 'Port Monitoring',
-    'pricing.tab.fleet': 'Fleet Monitoring',
-    'pricing.tab.cable': 'Subsea Cable',
-    'pricing.port.sub': 'Port authorities & terminal operators',
-    'pricing.fleet.sub': 'Ferry operators & logistics companies',
-    'pricing.cable.sub': 'Cable operators & infrastructure firms',
-    'pricing.tier.basic': 'Basic',
-    'pricing.tier.basic': 'Basic',
-    'pricing.tier.basic': 'Basic',
-    'pricing.tier.basic': 'Basic',
-    'pricing.tier.exposure': 'Exposure',
-    'pricing.tier.sentinel': 'Sentinel',
-    'pricing.tier.command': 'Command',
-    'pricing.port.exp.best': 'Best for port operators needing a clear baseline view of hybrid threat exposure across critical port assets.',
-    'pricing.port.sen.best': 'Best for teams that need live alerting, trend detection, and sharper visibility into changing port risk conditions.',
-    'pricing.port.cmd.best': 'Best for high-priority ports requiring predictive threat forecasting, executive reporting, and operational decision support.',
-    'pricing.fleet.exp.best': 'Best for ferry, logistics, and vessel operators that need route-level exposure visibility without added analytical overhead.',
-    'pricing.fleet.sen.best': 'Best for operators managing active routes who need early warning of geopolitical, cyber, weather, and gray-zone disruptions.',
-    'pricing.fleet.cmd.best': 'Best for fleet operators requiring predictive routing intelligence, scenario analysis, and tailored risk briefings.',
-    'pricing.cable.exp.best': 'Best for subsea cable owners and infrastructure teams needing visibility into baseline exposure along key cable corridors.',
-    'pricing.cable.sen.best': 'Best for teams monitoring vessel activity, anchoring risk, and regional instability near sensitive cable infrastructure.',
-    'pricing.cable.cmd.best': 'Best for critical infrastructure operators requiring predictive cable threat forecasting, escalation support, and strategic risk analysis.',
-    'pricing.f.weekly': 'Weekly briefing digest',
-    'pricing.f.mhtes.port': 'Live MHTES intelligence terminal',
-    'pricing.f.window72.port': '72-hr exposure window',
-    'pricing.f.ais.port': 'AIS & grey fleet signals',
-    'pricing.f.geo.disinfo': 'Geopolitical & disinfo feeds',
-    'pricing.f.cyber': 'Cyber vulnerability signals',
-    'pricing.f.pred': 'Predictive threat modeling',
-    'pricing.f.alerts': 'Real-time exposure alerts',
-    'pricing.f.custom': 'Custom intelligence reports',
-    'pricing.f.api': 'API access & data export',
-    'pricing.f.analyst': 'Dedicated analyst support',
-    'pricing.f.mhtes.fleet': 'Live MHTES per vessel',
-    'pricing.f.route': 'Route strategic value scoring',
-    'pricing.f.ais.fleet': 'AIS & chokepoint alerts',
-    'pricing.f.spoof': 'AIS spoofing & GPS jam detection',
-    'pricing.f.window72.fleet': '72-hr predictive window',
-    'pricing.f.scenario.fleet': 'Scenario & route analysis',
-    'pricing.f.mhtes.cable': 'Live MHTES per cable route',
-    'pricing.f.vessel': 'Vessel density pressure score',
-    'pricing.f.anchor': 'Anchoring & drag risk alerts',
-    'pricing.f.geo.hybrid': 'Geopolitical & hybrid signals',
-    'pricing.f.cyber.cable': 'Cyber & infrastructure exposure',
-    'pricing.f.disinfo': 'Disinformation monitoring',
-    'pricing.f.scenario.cable': 'Scenario & sabotage modeling',
-    'pricing.btn.launch': 'Launch Now',
-    'pricing.btn.access': 'Request Access',
-    'pricing.btn.contact': 'Contact Us',
     // Clients
-    'clients.label': 'Who We Serve',
-    'clients.h2': "Who <br><span>We Serve</span>",
-    'client.1': 'Port Authorities',
-    'client.2': 'Ferry Operators',
-    'client.3': 'Cruise Terminal Ops',
-    'client.4': 'Logistics Firms',
-    'client.5': 'Marine Insurers',
-    'client.6': 'Energy Transport',
-    'client.7': 'Private Equity',
-    'client.8': 'Institutional Investors',
-    'client.9': 'Critical Infrastructure',
-    'client.10': 'Government Agencies',
     // CTA
-    'cta.h2': 'The Mediterranean Doesn\'t Wait. <br><span>Neither Should You.</span>',
-    'cta.p': "Explore the intelligence terminal or request a platform demonstration.",
-    'cta.btn1': 'Request Platform Demo',
     // Footer
     "footer.brand": "Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.",
     'footer.hq': '// HQ: Brussels, Belgium',
     'footer.h.services': 'Services',
     'footer.h.coverage': 'Coverage',
     'footer.h.contact': 'Contact',
-    'footer.l.dashboard': 'Mediterranean Watch Intelligence Terminal',
-    'footer.l.tiers': 'Subscription Tiers',
     'footer.geo.1': 'Strait of Gibraltar',
     'footer.geo.2': 'Tyrrhenian Sea',
     'footer.geo.3': 'Strait of Sicily',
@@ -2303,54 +2215,15 @@ const translations = {
   },
   it: {
     // Nav
-    'nav.services': 'Servizi',
-    'nav.platform': 'Piattaforma Live',
-    'nav.pricing': 'Prezzi',
-    'nav.clients': 'Clienti',
-    'nav.cta': 'Lancia Terminale',
+    'nav.cta': 'Avvia la Piattaforma',
     // Hero
-    'hero.tag': 'PIATTAFORMA DI INTELLIGENCE IBRIDA MARITTIMA · Est. Bruxelles, Belgio',
-    'hero.h1': 'Intelligence che <br>si Muove <span>Prima</span> <br>della Disruption',
-    'hero.desc': "Un unico punteggio per l'esposizione alle minacce ibride nel Mediterraneo — porti, flotte e cavi, aggiornato in continuazione e costruito per la conformità UE.",
-    'hero.btn1': 'Visualizza Piattaforma Live',
-    'launch.btn': 'Lancia Terminale',
-    'plat.explore.btn': 'Esplora gli Abbonamenti',
-    'hero.btn2': 'I Nostri Servizi',
+    'launch.btn': 'Avvia la Piattaforma',
     // Services
-    'services.label': 'Servizi Principali',
-    'services.h2': 'Una Piattaforma. <br><span>Intelligence Più Nitida.</span>',
-    'services.lead': "Intelligence geospaziale in tempo reale e gli Intelligence Briefings per interpretarla — una piattaforma live e analisi curata, per operatori lungo il corridoio mediterraneo. Alla base di entrambe le offerte vi è il <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: un punteggio predittivo a 72 ore che fonde segnali di importanza strategica, esposizione geopolitica, attività grey-zone e vulnerabilità cyber in un unico indicatore di rischio per asset.",
-    's1.tagline': "Piattaforma di Intelligence Live",
-    's1.title': 'Terminale Intelligence di Sorveglianza<br>del Mediterraneo',
-    's1.sub': "Una piattaforma, un unico quadro con punteggio — che mostra come le minacce ibride colpiscono contemporaneamente sicurezza e commercio.",
-    's1.desc': "Il Terminale Intelligence non separa il rischio operativo dal rischio economico, perché il Mediterraneo non lo fa. Un solo evento — una dark vessel al largo della Sicilia, una sonda cyber su un porto, un'interruzione a Suez — appare in un unico quadro con punteggio, con previsioni alimentate da Maria, la nostra AI marittima.",
-    's1.launch': "Avvia il Terminale <span>→</span>",
-    's2.sub': "Note dal bacino — analisi curata, direttamente dal nostro team.",
-    'footer.l.briefings': "Intelligence Briefings",
-    's1.cta': 'Visualizza i Piani di Abbonamento <span>→</span>',
-    's1.f1': "Tracciamento navale in tempo reale e scoring delle minacce per corridoio — da Gibilterra a Suez",
-    's1.f2': "Allerte cross-dominio: cyber, militare, disinformazione, meteo, interruzioni portuali",
-    's1.f3': "Stress test della supply chain attraverso i chokepoint mediterranei",
-    's1.f4': "Trigger di allerta precoce automatizzati con notifica prioritaria",
-    's2.tagline': "Newsletter per Abbonati",
-    's2.title': "Intelligence<br>Briefings",
-    's2.flead': "In ogni briefing:",
-    's2.f1': "Analisi degli incidenti — cosa è successo nel bacino e perché è importante",
-    's2.f2': "Osservatorio normativo — sviluppi su NIS2, CER e Circolare 177/2025",
-    's2.f3': "Pattern di minaccia ibrida che i nostri analisti monitorano in tempo reale",
-    's2.desc': "Pubblichiamo briefing su ciò che si muove nel Mediterraneo: gli incidenti, i cambiamenti normativi e i pattern di minaccia ibrida che i nostri analisti monitorano in tempo reale. Letture in linguaggio chiaro per operatori, team di compliance e chiunque debba comprendere il bacino senza osservarlo a tempo pieno.",
-    's2.cta': "Leggi i Briefing <span>→</span>",
     // Live status bar
     'live.feed': 'CAM DI SORVEGLIANZA PORTUALE LIVE',
     'live.vessels': 'NAVI TRACCIATE',
     'live.traffic': 'TRAFFICO MARINO — MEDITERRANEO LIVE',
     // Platform
-    'platform.label': 'Piattaforma di Intelligence Live',
-    'plat.h2': 'La <span>Mediterranean Watch</span> <br>Terminale Intelligence',
-    'plat.opsmap.headline': "Una mappa. Ogni livello di rischio.",
-    'plat.opsmap.text': "Porti, cavi, navi, meteo e feed di intelligence live su un'unica mappa del Mediterraneo — filtrabile per livello di rischio, con convergenza delle minacce segnalata dall'AI, replay dei movimenti navali e il punteggio completo dietro ogni asset su cui cliccate.",
-    'plat.myassets.headline': "Il vostro punteggio, sui vostri sensori.",
-    'plat.myassets.text': "I clienti Enterprise trasmettono i propri feed di sensori hardware in un pannello personalizzato dedicato al proprio parco asset — ogni porto, cavo e nave con un punteggio individuale, riunito in un'unica vista di portafoglio.",
     'mhtes.headline': "Il vostro rischio, distillato in un numero.",
     'mhtes.sum.strong': "Un punteggio per ogni asset, aggiornato in continuo.",
     'mhtes.sum.text': "MHTES combina segnali di importanza strategica, esposizione geopolitica, attività grey-zone e vulnerabilità cyber in un unico numero su cui agire — 72 ore prima che si verifichi un'interruzione.",
@@ -2361,121 +2234,15 @@ const translations = {
     'mhtes.toggle': "Vedi la metodologia",
     'mhtes.gauge.label': "Moderato",
     'mhtes.api': "Integralo direttamente nelle tue piattaforme via API.",
-    'plat.lead': 'Il nostro terminale di intelligence per abbonati fornisce un\'awareness situazionale continua sull\'intero bacino mediterraneo — dallo Stretto di Gibilterra al Mediterraneo Orientale.',
-    'plat.chrome.title': '// SENTINELLA MARE · OPERAZIONI LIVE',
-    'plat.chrome.status': 'TUTTI I SISTEMI NOMINALI',
-    'plat.threat.title': '// Segnali di Minaccia Attivi',
-    'plat.threat.1': 'Impennata attività navale rilevata',
-    'plat.threat.1z': 'MED OCCID. · CONFIDENZA 87%',
-    'plat.threat.2': 'Congestione porto — rischio ritardo',
-    'plat.threat.2z': 'ALGERI · CONFIDENZA 73%',
-    'plat.threat.3': 'Sonda cyber su rete AIS',
-    'plat.threat.3z': 'ADRIATICO · CONFIDENZA 68%',
-    'plat.threat.4': "Guida meteo per routing",
-    'plat.threat.4z': 'TIRRENO · CONFIDENZA 94%',
-    'plat.metrics.title': '// Metriche Bacino',
-    'plat.metrics.vessels': 'Navi Live',
-    'plat.metrics.alerts': 'Allerte Attive',
-    'plat.metrics.risk': 'Rischio Med Occ.',
-    'plat.metrics.ais': 'Copertura AIS',
-    'plat.bottom.feeds': 'FEED: AIS · SIGINT · OSINT · SOCIAL · CYBER · NAVALE',
-    'plat.bottom.latency': 'LATENZA DATI: <90s',
-    'plat.bottom.coverage': 'COPERTURA: 36 STATI NAZIONE',
-    'plat.map.alert': 'MINACCIA ATTIVA · CORRIDOIO MED OCCIDENTALE',
-    'plat.map.gibraltar': 'STRETTO DI GIBILTERRA',
-    'plat.map.africa': 'CORRIDOIO N. AFRICA',
-    'plat.map.eastern': 'MED ORIENTALE',
-    'plat.map.sicily': 'STRETTO DI SICILIA',
     // Why
-    'why.label': 'Perché Sentinella Mare',
-    'why.h2': "Perché <br><span>Sentinella Mare</span>",
-    'why.lead': 'Siamo un\'azienda di intelligence abilitata dalla tecnologia — non un fornitore di report. Ogni segnale che forniamo è attuabile, contestuale e in anticipo sulla disruption.',
-    'why.c1.title': 'Predittivo, Non Reattivo',
-    'why.c1.text': "Trasformiamo segnali geopolitici, cyber, militari e ambientali in trigger di allerta precoce — prima che il rischio arrivi in prima pagina.",
-    'why.c2.title': 'Expertise Mediterraneo-Nativa',
-    'why.c2.text': "Siamo radicati nelle comunità portuali e nelle reti istituzionali che le aziende globali non possono replicare a distanza.",
-    'why.c3.title': 'Motore di Intelligence Proprietario',
-    'why.c3.text': "Un'AI addestrata sul rischio marittimo — non un wrapper generico — rileva pattern in shipping, attività navale, infrastrutture e corridoi energetici.",
-    'why.c4.title': 'Efficienza dell\'Abbonamento',
-    'why.c4.text': 'Il modello di abbonamento a livelli fornisce valore di intelligence continuo — nessuna fatturazione oraria, nessuna incertezza sul retainer. Paghi per la consapevolezza persistente, non per report episodici che invecchiano all\'arrivo.',
-    'why.c5.title': 'Intelligence da Leggere',
-    'why.c5.text': "I nostri Intelligence Briefings traducono ciò che si muove nel bacino — incidenti, cambiamenti normativi, pattern di minaccia ibrida — in analisi in linguaggio chiaro.",
-    'why.c6.title': 'Copertura Scalabile',
-    'why.c6.text': 'Iniziando dal corridoio marittimo sardo e scalando verso le rotte dello shipping del Mediterraneo Occidentale, Adriatico, Tirreno e Mediterraneo Orientale man mano che la base clienti si espande.',
     // Pricing
-    'pricing.label': 'Piattaforma di Abbonamento',
-    'pricing.h2': '<span>Mediterranean Watch</span> <br>Livelli di Abbonamento',
-    'pricing.lead': "Tre livelli — da un Alert Center live gratuito a deep simulation e reportistica di compliance di livello Enterprise — pensati per i momenti in cui non ci si può permettere di sbagliare.",
-    'pricing.tab.port': 'Monitoraggio Portuale',
-    'pricing.tab.fleet': 'Monitoraggio Flotte',
-    'pricing.tab.cable': 'Cavo Sottomarino',
-    'pricing.port.sub': 'Autorità portuali e operatori terminali',
-    'pricing.fleet.sub': 'Operatori di traghetti e aziende logistiche',
-    'pricing.cable.sub': 'Operatori di cavi e aziende infrastrutturali',
-    'pricing.tier.exposure': 'Exposure',
-    'pricing.tier.sentinel': 'Sentinel',
-    'pricing.tier.command': 'Command',
-    'pricing.port.exp.best': "Ideale per operatori portuali che necessitano di una visione baseline chiara dell'esposizione ibrida alle minacce sugli asset critici.",
-    'pricing.port.sen.best': 'Ideale per team che necessitano di allerte live, rilevamento trend e maggiore visibilità sulle condizioni di rischio portuale.',
-    'pricing.port.cmd.best': 'Ideale per porti ad alta priorità che richiedono previsione predittiva delle minacce, reportistica esecutiva e supporto decisionale.',
-    'pricing.fleet.exp.best': "Ideale per operatori di traghetti, logistica e navi che necessitano di visibilità sull'esposizione a livello di rotta senza overhead analitico aggiuntivo.",
-    'pricing.fleet.sen.best': 'Ideale per operatori che gestiscono rotte attive e necessitano di early warning su disruzioni geopolitiche, cyber, meteo e gray-zone.',
-    'pricing.fleet.cmd.best': 'Ideale per operatori di flotte che richiedono intelligence predittiva sul routing, analisi scenari e briefing sul rischio personalizzati.',
-    'pricing.cable.exp.best': "Ideale per proprietari di cavi sottomarini e team infrastrutturali che necessitano di visibilità sull'esposizione baseline lungo i corridoi cavo chiave.",
-    'pricing.cable.sen.best': "Ideale per team che monitorano l'attività navale, il rischio di ancoraggio e l'instabilità regionale vicino a infrastrutture cavo sensibili.",
-    'pricing.cable.cmd.best': "Ideale per operatori di infrastrutture critiche che richiedono previsione predittiva delle minacce, supporto all'escalation e analisi strategica del rischio.",
-    'pricing.f.weekly': 'Digest settimanale',
-    'pricing.f.mhtes.port': 'Terminale Intelligence MHTES in tempo reale',
-    'pricing.f.window72.port': 'Finestra di esposizione 72 ore',
-    'pricing.f.ais.port': 'Segnali AIS e flotta grigia',
-    'pricing.f.geo.disinfo': 'Feed geopolitici e disinformazione',
-    'pricing.f.cyber': 'Segnali di vulnerabilità cyber',
-    'pricing.f.pred': 'Modellazione predittiva delle minacce',
-    'pricing.f.alerts': 'Allerte di esposizione in tempo reale',
-    'pricing.f.custom': 'Report intelligence personalizzati',
-    'pricing.f.api': 'Accesso API ed esportazione dati',
-    'pricing.f.analyst': 'Supporto analista dedicato',
-    'pricing.f.mhtes.fleet': 'MHTES live per nave',
-    'pricing.f.route': 'Scoring del valore strategico del percorso',
-    'pricing.f.ais.fleet': 'Allerte AIS e chokepoint',
-    'pricing.f.spoof': 'Rilevamento spoofing AIS e jamming GPS',
-    'pricing.f.window72.fleet': 'Finestra predittiva 72 ore',
-    'pricing.f.scenario.fleet': 'Analisi scenari e percorsi',
-    'pricing.f.mhtes.cable': 'MHTES live per rotta cavo',
-    'pricing.f.vessel': 'Punteggio pressione densità navale',
-    'pricing.f.anchor': 'Allerte rischio ancoraggio e trascinamento',
-    'pricing.f.geo.hybrid': 'Segnali geopolitici e ibridi',
-    'pricing.f.cyber.cable': 'Esposizione cyber e infrastrutturale',
-    'pricing.f.disinfo': 'Monitoraggio disinformazione',
-    'pricing.f.scenario.cable': 'Modellazione scenari e sabotaggio',
-    'pricing.btn.launch': 'Lancia Ora',
-    'pricing.btn.access': 'Richiedi Accesso',
-    'pricing.btn.contact': 'Contattaci',
     // Clients
-    'clients.label': 'Chi Serviamo',
-    'clients.h2': "Chi <br><span>Serviamo</span>",
-    'client.1': 'Autorità Portuali',
-    'client.2': 'Operatori di Traghetti',
-    'client.3': 'Operazioni Terminal Crociere',
-    'client.4': 'Aziende Logistiche',
-    'client.5': 'Assicuratori Marittimi',
-    'client.6': 'Trasporto Energetico',
-    'client.7': 'Private Equity',
-    'client.8': 'Investitori Istituzionali',
-    'client.9': 'Infrastrutture Critiche',
-    'client.10': 'Agenzie Governative',
     // CTA
-    'cta.h2': 'Il Mediterraneo Non Aspetta. <br><span>Nemmeno Tu Dovresti.</span>',
-    'cta.p': "Esplora il terminale intelligence o richiedi una dimostrazione della piattaforma.",
-    'cta.btn1': 'Richiedi Demo Piattaforma',
     // Footer
-    'footer.brand': "Intelligence marittima mediterranea. Risk intelligence basata su AI per armatori, aziende logistiche e investitori istituzionali che navigano nel mare strategicamente più complesso del mondo.",
     'footer.hq': '// QG: Bruxelles, Belgio',
     'footer.h.services': 'Servizi',
     'footer.h.coverage': 'Copertura',
     'footer.h.contact': 'Contatto',
-    'footer.l.dashboard': 'Terminale Intelligence Mediterranean Watch',
-    'footer.l.tiers': 'Livelli di Abbonamento',
     'footer.geo.1': 'Stretto di Gibilterra',
     'footer.geo.2': 'Mar Tirreno',
     'footer.geo.3': 'Stretto di Sicilia',
@@ -2484,54 +2251,15 @@ const translations = {
   },
   ar: {
     // Nav
-    'nav.services': 'الخدمات',
-    'nav.platform': 'المنصة المباشرة',
-    'nav.pricing': 'الأسعار',
-    'nav.clients': 'العملاء',
-    'nav.cta': 'إطلاق الطرفية',
+    'nav.cta': 'إطلاق المنصة',
     // Hero
-    'hero.tag': 'منصة استخبارات التهديدات الهجينة البحرية · تأسست في بروكسل، بلجيكا',
-    'hero.h1': 'استخبارات تتحرك <br><span>قبل</span> <br>حدوث الاضطراب',
-    'hero.desc': "درجة واحدة لقياس التعرّض للتهديدات الهجينة في البحر الأبيض المتوسط — عبر الموانئ والأساطيل والكابلات، محدَّثة باستمرار ومبنية للامتثال للاتحاد الأوروبي.",
-    'hero.btn1': 'عرض المنصة المباشرة',
-    'launch.btn': 'إطلاق الطرفية',
-    'plat.explore.btn': 'استكشف الاشتراكات',
-    'hero.btn2': 'خدماتنا',
+    'launch.btn': 'إطلاق المنصة',
     // Services
-    'services.label': 'الخدمات الأساسية',
-    'services.h2': 'منصة واحدة. <br><span>استخبارات أكثر حدّة.</span>',
-    'services.lead': "ذكاء جيومكاني فوري وIntelligence Briefings لفهمه — منصة حية وتحليل منسَّق، للمشغّلين عبر الممر المتوسطي. يستند كلا العرضين إلى <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: نقاط تعرض تنبؤية لمدة 72 ساعة تدمج إشارات الأهمية الاستراتيجية والتعرض الجيوسياسي ونشاط المنطقة الرمادية والثغرات السيبرانية في مقياس مخاطر واحد قابل للتنفيذ لكل أصل.",
-    's1.tagline': "منصة استخبارات حية",
-    's1.title': 'محطة استخبارات المراقبة<br>البحر الأبيض المتوسط',
-    's1.sub': "منصة واحدة، صورة واحدة مسجَّلة بالنقاط — تُظهر كيف تضرب التهديدات الهجينة الأمن والتجارة في آنٍ واحد.",
-    's1.launch': "تشغيل التيرمينال <span>→</span>",
-    's2.sub': "ملاحظات ميدانية من الحوض — تحليل منسَّق، مباشرةً من فريقنا.",
-    'footer.l.briefings': "Intelligence Briefings",
-    's1.desc': "لا يفصل تيرمينال الاستخبارات بين المخاطر التشغيلية والمخاطر الاقتصادية، لأن البحر الأبيض المتوسط لا يفصل بينهما أيضاً. حدث واحد — سفينة مظلمة قبالة صقلية، أو فحص سيبراني على ميناء، أو تعطّل في السويس — يظهر في صورة واحدة مسجَّلة بالنقاط، مع تنبؤات مدعومة بـ Maria، ذكاؤنا الاصطناعي البحري.",
-    's1.cta': 'عرض خطط الاشتراك <span>→</span>',
-    's1.f1': "تتبّع السفن في الوقت الفعلي وتسجيل التهديدات لكل ممر — من جبل طارق إلى السويس",
-    's1.f2': "تنبيهات متعددة المجالات: سيبرانية، عسكرية، تضليل، طقس، تعطّل الموانئ",
-    's1.f3': "اختبار إجهاد سلسلة التوريد عبر نقاط الاختناق المتوسطية",
-    's1.f4': "مشغّلات إنذار مبكر آلية مع إشعار ذي أولوية",
-    's2.tagline': "نشرة للمشتركين",
-    's2.title': "Intelligence<br>Briefings",
-    's2.flead': "في كل إحاطة:",
-    's2.f1': "تحليل الحوادث — ما الذي حدث في الحوض ولماذا يهم",
-    's2.f2': "رصد تنظيمي — تطورات NIS2 وCER والتعميم 177/2025",
-    's2.f3': "أنماط التهديد الهجين التي يتابعها محللونا في الوقت الفعلي",
-    's2.desc': "ننشر إحاطات حول ما يتحرك في البحر الأبيض المتوسط: الحوادث والتحولات التنظيمية وأنماط التهديد الهجين التي يتابعها محللونا في الوقت الفعلي. قراءات بلغة واضحة للمشغّلين وفرق الامتثال وكل من يحتاج إلى فهم الحوض دون متابعته بدوام كامل.",
-    's2.cta': "اقرأ الإحاطات <span>→</span>",
     // Live status bar
     'live.feed': 'كاميرات مراقبة الموانئ المباشرة',
     'live.vessels': 'السفن المتتبعة',
     'live.traffic': 'الحركة البحرية — البحر المتوسط مباشرة',
     // Platform
-    'platform.label': 'منصة الاستخبارات المباشرة',
-    'plat.h2': '<span>Mediterranean Watch</span> <br>محطة الاستخبارات',
-    'plat.opsmap.headline': "خريطة واحدة. كل مستوى من المخاطر.",
-    'plat.opsmap.text': "الموانئ والكابلات والسفن والطقس وموجزات الاستخبارات الحية على خريطة واحدة للبحر الأبيض المتوسط — قابلة للتصفية حسب مستوى الخطر، مع رصد تقارب التهديدات بالذكاء الاصطناعي، وإعادة تشغيل حركة السفن، والتفصيل الكامل للنقاط خلف أي أصل تنقر عليه.",
-    'plat.myassets.headline': "أصولكم، بنقاط تعتمد على مستشعراتكم الخاصة.",
-    'plat.myassets.text': "يقوم عملاء Enterprise ببث بيانات مستشعراتهم الخاصة إلى لوحة مخصصة تغطي أصولهم فقط — يُقيَّم كل ميناء وكابل وسفينة على حدة، ويجتمع ذلك كله في رؤية واحدة على مستوى المحفظة.",
     'mhtes.headline': "مخاطرك، مكثَّفة في رقم واحد.",
     'mhtes.sum.strong': "نقاط واحدة لكل أصل، محدَّثة باستمرار.",
     'mhtes.sum.text': "يجمع MHTES إشارات الأهمية الاستراتيجية والتعرض الجيوسياسي ونشاط المنطقة الرمادية والثغرات السيبرانية في رقم واحد يمكنك التصرف بناءً عليه — قبل 72 ساعة من وقوع الاضطراب.",
@@ -2542,121 +2270,15 @@ const translations = {
     'mhtes.toggle': "عرض المنهجية",
     'mhtes.gauge.label': "متوسط",
     'mhtes.api': "ادمجه مباشرةً في منصاتك الخاصة عبر واجهة برمجة التطبيقات (API).",
-    'plat.lead': 'توفر محطة استخبارات المشتركين لدينا وعياً ظرفياً مستمراً عبر حوض البحر الأبيض المتوسط بأكمله — من مضيق جبل طارق إلى شرق المتوسط.',
-    'plat.chrome.title': '// SENTINELLA MARE · العمليات المباشرة',
-    'plat.chrome.status': 'جميع الأنظمة طبيعية',
-    'plat.threat.title': '// إشارات التهديد النشطة',
-    'plat.threat.1': 'تم الكشف عن ارتفاع في النشاط البحري',
-    'plat.threat.1z': 'غرب المتوسط · ثقة 87%',
-    'plat.threat.2': 'ازدحام الميناء — خطر التأخير',
-    'plat.threat.2z': 'الجزائر · ثقة 73%',
-    'plat.threat.3': 'تحقيق سيبراني في شبكة AIS',
-    'plat.threat.3z': 'الأدرياتيكي · ثقة 68%',
-    'plat.threat.4': "توجيه المسار حسب الطقس",
-    'plat.threat.4z': 'التيراني · ثقة 94%',
-    'plat.metrics.title': '// مقاييس الحوض',
-    'plat.metrics.vessels': 'سفن مباشرة',
-    'plat.metrics.alerts': 'تنبيهات نشطة',
-    'plat.metrics.risk': 'خطر غرب المتوسط',
-    'plat.metrics.ais': 'تغطية AIS',
-    'plat.bottom.feeds': 'التغذية: AIS · SIGINT · OSINT · اجتماعي · سيبراني · بحري',
-    'plat.bottom.latency': 'كمون البيانات: <90 ثانية',
-    'plat.bottom.coverage': 'التغطية: 36 دولة',
-    'plat.map.alert': 'تهديد نشط · ممر غرب المتوسط',
-    'plat.map.gibraltar': 'مضيق جبل طارق',
-    'plat.map.africa': 'ممر شمال أفريقيا',
-    'plat.map.eastern': 'شرق المتوسط',
-    'plat.map.sicily': 'مضيق صقلية',
     // Why
-    'why.label': 'لماذا Sentinella Mare',
-    'why.h2': 'لماذا <br><span>Sentinella Mare</span>',
-    'why.lead': 'نحن شركة استخبارات مدعومة بالتكنولوجيا — لسنا مزوداً للتقارير. كل إشارة نقدمها قابلة للتنفيذ وسياقية ومتقدمة على الاضطراب.',
-    'why.c1.title': 'تنبؤي وليس تفاعلي',
-    'why.c1.text': 'نحوّل الإشارات الجيوسياسية والسيبرانية والعسكرية والبيئية إلى محفزات إنذار مبكر — قبل أن يصل الخطر إلى العناوين الرئيسية.',
-    'why.c2.title': 'خبرة متوسطية أصيلة',
-    'why.c2.text': 'نحن مندمجون في مجتمعات الموانئ والشبكات المؤسسية التي لا تستطيع الشركات العالمية تكرارها عن بُعد.',
-    'why.c3.title': 'محرك استخبارات خاص',
-    'why.c3.text': 'ذكاء اصطناعي مبني خصيصاً على المخاطر البحرية — وليس غلافاً عاماً — يكتشف الأنماط عبر الشحن والنشاط البحري والبنية التحتية وممرات الطاقة.',
-    'why.c4.title': 'كفاءة الاشتراك',
-    'why.c4.text': 'يوفر نموذج الاشتراك المتدرج قيمة استخباراتية مستمرة — لا فوترة بالساعة، لا غموض في الاتفاقية. أنت تدفع مقابل الوعي المستمر، لا التقارير الظرفية التي تتقادم عند الوصول.',
-    'why.c5.title': 'استخبارات قابلة للقراءة',
-    'why.c5.text': 'تُترجم Intelligence Briefings ما يتحرك في الحوض — الحوادث والتحولات التنظيمية وأنماط التهديد الهجين — إلى تحليل بلغة واضحة.',
-    'why.c6.title': 'تغطية قابلة للتوسع',
-    'why.c6.text': 'بدءاً من الممر البحري السردي والتوسع نحو مسارات الشحن في غرب المتوسط والأدرياتيك والتيراني وشرق المتوسط مع توسع قاعدة العملاء.',
     // Pricing
-    'pricing.label': 'منصة الاشتراك',
-    'pricing.h2': '<span>Mediterranean Watch</span> <br>مستويات الاشتراك',
-    'pricing.lead': "ثلاث فئات — من مركز تنبيهات حي مجاني إلى محاكاة عميقة وتقارير امتثال بمستوى Enterprise — مصمَّمة للحظات التي لا تحتمل الخطأ.",
-    'pricing.tab.port': 'مراقبة الموانئ',
-    'pricing.tab.fleet': 'مراقبة الأسطول',
-    'pricing.tab.cable': 'الكابل البحري',
-    'pricing.port.sub': 'سلطات الموانئ ومشغّلو المحطات',
-    'pricing.fleet.sub': 'مشغّلو العبّارات وشركات اللوجستيات',
-    'pricing.cable.sub': 'مشغّلو الكابلات والشركات الإنشائية',
-    'pricing.tier.exposure': 'Exposure',
-    'pricing.tier.sentinel': 'Sentinel',
-    'pricing.tier.command': 'Command',
-    'pricing.port.exp.best': 'مثالي لمشغّلي الموانئ الذين يحتاجون إلى رؤية أساسية واضحة لتعرّض التهديدات الهجينة على أصول الموانئ الحيوية.',
-    'pricing.port.sen.best': 'مثالي للفرق التي تحتاج إلى تنبيهات مباشرة وكشف الاتجاهات ورؤية أوضح لتغيّر ظروف المخاطر الميناوية.',
-    'pricing.port.cmd.best': 'مثالي للموانئ ذات الأولوية العالية التي تتطلب توقع التهديدات التنبؤية والتقارير التنفيذية ودعم القرار التشغيلي.',
-    'pricing.fleet.exp.best': 'مثالي لمشغّلي العبّارات واللوجستيات والسفن الذين يحتاجون إلى رؤية تعرّض على مستوى المسار دون عبء تحليلي إضافي.',
-    'pricing.fleet.sen.best': 'مثالي للمشغّلين الذين يديرون مسارات نشطة ويحتاجون إلى إنذار مبكر بشأن اضطرابات جيوسياسية وسيبرانية وجوية وبالمنطقة الرمادية.',
-    'pricing.fleet.cmd.best': 'مثالي لمشغّلي الأساطيل الذين يتطلبون ذكاء توجيه تنبؤي وتحليل سيناريوهات وإحاطات مخاطر مخصصة.',
-    'pricing.cable.exp.best': 'مثالي لأصحاب الكابلات البحرية وفرق البنية التحتية التي تحتاج إلى رؤية للتعرض الأساسي على طول ممرات الكابلات الرئيسية.',
-    'pricing.cable.sen.best': 'مثالي للفرق التي ترصد نشاط السفن ومخاطر الإرساء والاضطرابات الإقليمية بالقرب من البنية التحتية الحساسة للكابلات.',
-    'pricing.cable.cmd.best': 'مثالي لمشغّلي البنية التحتية الحيوية الذين يتطلبون توقع التهديدات التنبؤية ودعم التصعيد والتحليل الاستراتيجي للمخاطر.',
-    'pricing.f.weekly': 'ملخص أسبوعي',
-    'pricing.f.mhtes.port': 'محطة استخبارات MHTES المباشرة',
-    'pricing.f.window72.port': 'نافذة تعرض 72 ساعة',
-    'pricing.f.ais.port': 'إشارات AIS والأسطول الرمادي',
-    'pricing.f.geo.disinfo': 'موجزات جيوسياسية ومعلومات مضللة',
-    'pricing.f.cyber': 'إشارات الثغرات السيبرانية',
-    'pricing.f.pred': 'نمذجة التهديدات التنبؤية',
-    'pricing.f.alerts': 'تنبيهات التعرض الفوري',
-    'pricing.f.custom': 'تقارير استخباراتية مخصصة',
-    'pricing.f.api': 'الوصول إلى API وتصدير البيانات',
-    'pricing.f.analyst': 'دعم محلل متخصص',
-    'pricing.f.mhtes.fleet': 'MHTES مباشر لكل سفينة',
-    'pricing.f.route': 'تقييم القيمة الاستراتيجية للمسار',
-    'pricing.f.ais.fleet': 'تنبيهات AIS ونقاط الاختناق',
-    'pricing.f.spoof': 'كشف انتحال AIS وتشويش GPS',
-    'pricing.f.window72.fleet': 'نافذة تنبؤية 72 ساعة',
-    'pricing.f.scenario.fleet': 'تحليل السيناريوهات والمسارات',
-    'pricing.f.mhtes.cable': 'MHTES مباشر لكل مسار كابل',
-    'pricing.f.vessel': 'درجة ضغط كثافة السفن',
-    'pricing.f.anchor': 'تنبيهات مخاطر الإرساء والسحب',
-    'pricing.f.geo.hybrid': 'إشارات جيوسياسية وهجينة',
-    'pricing.f.cyber.cable': 'التعرض السيبراني والبنية التحتية',
-    'pricing.f.disinfo': 'مراقبة التضليل الإعلامي',
-    'pricing.f.scenario.cable': 'نمذجة السيناريوهات والتخريب',
-    'pricing.btn.launch': 'إطلاق الآن',
-    'pricing.btn.access': 'طلب الوصول',
-    'pricing.btn.contact': 'تواصل معنا',
     // Clients
-    'clients.label': 'من نخدم',
-    'clients.h2': 'من <br><span>نخدم</span>',
-    'client.1': 'سلطات الموانئ',
-    'client.2': 'مشغّلو العبّارات',
-    'client.3': 'عمليات محطات السفن السياحية',
-    'client.4': 'شركات اللوجستيات',
-    'client.5': 'شركات التأمين البحري',
-    'client.6': 'نقل الطاقة',
-    'client.7': 'الأسهم الخاصة',
-    'client.8': 'المستثمرون المؤسسيون',
-    'client.9': 'البنية التحتية الحيوية',
-    'client.10': 'الوكالات الحكومية',
     // CTA
-    'cta.h2': 'البحر الأبيض المتوسط لا ينتظر. <br><span>ولا أنت يجب أن تنتظر.</span>',
-    'cta.p': "استكشف محطة الاستخبارات أو اطلب عرضاً تجريبياً للمنصة.",
-    'cta.btn1': 'طلب عرض توضيحي للمنصة',
     // Footer
-    'footer.brand': 'استخبارات بحرية متوسطية. استخبارات مخاطر مدعومة بالذكاء الاصطناعي لشركات الشحن والشركات اللوجستية والمستثمرين المؤسسيين الذين يبحرون في أكثر بحار العالم تعقيداً من الناحية الاستراتيجية.',
     'footer.hq': '// المقر: بروكسل، بلجيكا',
     'footer.h.services': 'الخدمات',
     'footer.h.coverage': 'التغطية',
     'footer.h.contact': 'اتصل',
-    'footer.l.dashboard': 'محطة استخبارات Mediterranean Watch',
-    'footer.l.tiers': 'مستويات الاشتراك',
     'footer.geo.1': 'مضيق جبل طارق',
     'footer.geo.2': 'البحر التيراني',
     'footer.geo.3': 'مضيق صقلية',
@@ -2665,54 +2287,15 @@ const translations = {
   },
   el: {
     // Nav
-    'nav.services': 'Υπηρεσίες',
-    'nav.platform': 'Ζωντανή Πλατφόρμα',
-    'nav.pricing': 'Τιμολόγηση',
-    'nav.clients': 'Πελάτες',
-    'nav.cta': 'Εκκίνηση Τερματικού',
+    'nav.cta': 'Εκκίνηση Πλατφόρμας',
     // Hero
-    'hero.tag': 'ΠΛΑΤΦΌΡΜΑ ΥΒΡΙΔΙΚΗΣ ΝΑΥΤΙΚΗΣ ΠΛΗΡΟΦΟΡΙΑΚΗΣ ΑΠΕΙΛΗΣ · Ίδρ. Βρυξέλλες, Βέλγιο',
-    'hero.h1': 'Πληροφόρηση που <br>Κινείται <span>Πριν</span> <br>από την Αναστάτωση',
-    'hero.desc': "Μία βαθμολογία για την έκθεση σε υβριδικές απειλές στη Μεσόγειο — σε λιμάνια, στόλους και καλώδια, συνεχώς ενημερωμένη και σχεδιασμένη για συμμόρφωση με την ΕΕ.",
-    'hero.btn1': 'Προβολή Ζωντανής Πλατφόρμας',
-    'launch.btn': 'Εκκίνηση Τερματικού',
-    'plat.explore.btn': 'Εξερευνήστε τις Συνδρομές',
-    'hero.btn2': 'Οι Υπηρεσίες μας',
+    'launch.btn': 'Εκκίνηση Πλατφόρμας',
     // Services
-    'services.label': 'Βασικές Υπηρεσίες',
-    'services.h2': 'Μία Πλατφόρμα. <br><span>Πιο Αιχμηρή Πληροφόρηση.</span>',
-    'services.lead': "Γεωχωρική πληροφόρηση σε πραγματικό χρόνο και τα Intelligence Briefings για να την κατανοήσετε — μια ζωντανή πλατφόρμα και επιμελημένη ανάλυση, για χειριστές στον μεσογειακό διάδρομο. Υπόβαθρο και των δύο προσφορών αποτελεί το <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: ένα προβλεπτικό σκορ 72 ωρών που συνδυάζει σήματα στρατηγικής σημασίας, γεωπολιτικής έκθεσης, δραστηριότητας γκρίζας ζώνης και κυβερνοευπάθειας σε ένα ενιαίο μετρήσιμο δείκτη κινδύνου ανά περιουσιακό στοιχείο.",
-    's1.tagline': "Ζωντανή Πλατφόρμα Πληροφόρησης",
-    's1.title': 'Τερματικό Πληροφοριών Παρακολούθησης<br>Μεσογείου',
-    's1.sub': "Μία πλατφόρμα, μία βαθμολογημένη εικόνα — που δείχνει πώς οι υβριδικές απειλές πλήττουν ταυτόχρονα την ασφάλεια και το εμπόριο.",
-    's1.launch': "Εκκίνηση Τερματικού <span>→</span>",
-    's2.sub': "Σημειώσεις πεδίου από τη λεκάνη — επιμελημένη ανάλυση, απευθείας από την ομάδα μας.",
-    'footer.l.briefings': "Intelligence Briefings",
-    's1.desc': "Το Τερματικό Πληροφόρησης δεν διαχωρίζει τον επιχειρησιακό κίνδυνο από τον οικονομικό, επειδή ούτε η Μεσόγειος το κάνει. Ένα μόνο συμβάν — ένα «σκοτεινό» πλοίο ανοιχτά της Σικελίας, μια κυβερνοανίχνευση σε λιμάνι, μια διαταραχή στο Σουέζ — εμφανίζεται σε μία ενιαία βαθμολογημένη εικόνα, με προβλέψεις που υποστηρίζονται από τη Maria, τη ναυτιλιακή μας AI.",
-    's1.cta': 'Δείτε τα Πλάνα Συνδρομής <span>→</span>',
-    's1.f1': "Παρακολούθηση πλοίων σε πραγματικό χρόνο και βαθμολόγηση απειλών ανά διάδρομο — από το Γιβραλτάρ έως το Σουέζ",
-    's1.f2': "Ειδοποιήσεις πολλαπλών τομέων: κυβερνο-, στρατιωτικές, παραπληροφόρηση, καιρός, διαταραχές λιμένων",
-    's1.f3': "Stress testing εφοδιαστικής αλυσίδας στα μεσογειακά σημεία συμφόρησης",
-    's1.f4': "Αυτοματοποιημένοι πυροδοτητές έγκαιρης προειδοποίησης με ειδοποίηση προτεραιότητας",
-    's2.tagline': "Ενημερωτικό Δελτίο Συνδρομητών",
-    's2.title': "Intelligence<br>Briefings",
-    's2.flead': "Σε κάθε ενημέρωση:",
-    's2.f1': "Ανάλυση περιστατικών — τι συνέβη στη λεκάνη και γιατί έχει σημασία",
-    's2.f2': "Κανονιστική παρακολούθηση — εξελίξεις σε NIS2, CER και Εγκύκλιο 177/2025",
-    's2.f3': "Μοτίβα υβριδικών απειλών που παρακολουθούν οι αναλυτές μας σε πραγματικό χρόνο",
-    's2.desc': "Δημοσιεύουμε ενημερώσεις για όσα κινούνται στη Μεσόγειο: τα περιστατικά, τις κανονιστικές αλλαγές και τα μοτίβα υβριδικών απειλών που παρακολουθούν οι αναλυτές μας σε πραγματικό χρόνο. Κείμενα σε απλή γλώσσα για χειριστές, ομάδες συμμόρφωσης και όποιον χρειάζεται να κατανοεί τη λεκάνη χωρίς να την παρακολουθεί με πλήρη απασχόληση.",
-    's2.cta': "Διαβάστε τα Δελτία <span>→</span>",
     // Live status bar
     'live.feed': 'ΖΩΝΤΑΝΕΣ ΚΑΜΕΡΕΣ ΠΑΡΑΚΟΛΟΥΘΗΣΗΣ ΛΙΜΑΝΙΩΝ',
     'live.vessels': 'ΠΛΟΙΑ ΥΠΟ ΠΑΡΑΚΟΛΟΥΘΗΣΗ',
     'live.traffic': 'ΝΑΥΤΙΚΗ ΚΙΝΗΣΗ — ΜΕΣΟΓΕΙΟΣ LIVE',
     // Platform
-    'platform.label': 'Ζωντανή Πλατφόρμα Πληροφόρησης',
-    'plat.h2': 'Η <span>Mediterranean Watch</span> <br>Τερματικό Πληροφοριών',
-    'plat.opsmap.headline': "Ένας χάρτης. Κάθε επίπεδο κινδύνου.",
-    'plat.opsmap.text': "Λιμάνια, καλώδια, πλοία, καιρός και ζωντανές ροές πληροφόρησης σε έναν ενιαίο χάρτη της Μεσογείου — φιλτραρισμένος ανά επίπεδο κινδύνου, με σύγκλιση απειλών επισημασμένη από AI, replay κίνησης πλοίων και την πλήρη ανάλυση βαθμολογίας πίσω από κάθε περιουσιακό στοιχείο που επιλέγετε.",
-    'plat.myassets.headline': "Το χαρτοφυλάκιό σας, με τα δικά σας δεδομένα αισθητήρων.",
-    'plat.myassets.text': "Οι πελάτες Enterprise μεταδίδουν τα δικά τους δεδομένα αισθητήρων υλικού σε έναν εξατομικευμένο πίνακα αποκλειστικά για το δικό τους χαρτοφυλάκιο — κάθε λιμάνι, καλώδιο και πλοίο βαθμολογείται ξεχωριστά, συγκεντρωμένα σε μία συνολική εικόνα χαρτοφυλακίου.",
     'mhtes.headline': "Ο κίνδυνός σας, σε έναν αριθμό.",
     'mhtes.sum.strong': "Μία βαθμολογία ανά περιουσιακό στοιχείο, συνεχώς ενημερωμένη.",
     'mhtes.sum.text': "Το MHTES συνδυάζει σήματα στρατηγικής σημασίας, γεωπολιτικής έκθεσης, δραστηριότητας γκρίζας ζώνης και κυβερνοευπάθειας σε έναν ενιαίο αριθμό στον οποίο μπορείτε να βασιστείτε — 72 ώρες πριν από τη διαταραχή.",
@@ -2723,121 +2306,15 @@ const translations = {
     'mhtes.toggle': "Δείτε τη μεθοδολογία",
     'mhtes.gauge.label': "Μέτριο",
     'mhtes.api': "Ενσωματώστε το απευθείας στις δικές σας πλατφόρμες μέσω API.",
-    'plat.lead': 'Το τερματικό πληροφοριών συνδρομητών μας παρέχει συνεχή κατάσταση σε ολόκληρη τη μεσογειακή λεκάνη — από το Στενό του Γιβραλτάρ έως την Ανατολική Μεσόγειο.',
-    'plat.chrome.title': '// SENTINELLA MARE · ΖΩΝΤΑΝΕΣ ΕΠΙΧΕΙΡΗΣΕΙΣ',
-    'plat.chrome.status': 'ΟΛΑ ΤΑ ΣΥΣΤΗΜΑΤΑ ΚΑΝΟΝΙΚΑ',
-    'plat.threat.title': '// Ενεργά Σήματα Απειλής',
-    'plat.threat.1': 'Ανιχνεύθηκε αύξηση ναυτικής δραστηριότητας',
-    'plat.threat.1z': 'ΔΥΤ. ΜΕΣΟΓΕΙΟΣ · ΕΜΠΙΣΤΟΣΥΝΗ 87%',
-    'plat.threat.2': 'Συμφόρηση λιμανιού — κίνδυνος καθυστέρησης',
-    'plat.threat.2z': 'ΑΛΓΕΡΙ · ΕΜΠΙΣΤΟΣΥΝΗ 73%',
-    'plat.threat.3': 'Κυβερνοδιερεύνηση στο δίκτυο AIS',
-    'plat.threat.3z': 'ΑΔΡΙΑΤΙΚΗ · ΕΜΠΙΣΤΟΣΥΝΗ 68%',
-    'plat.threat.4': "Καθοδήγηση δρομολόγησης καιρού",
-    'plat.threat.4z': 'ΤΥΡΡΗΝΙΚΗ · ΕΜΠΙΣΤΟΣΥΝΗ 94%',
-    'plat.metrics.title': '// Μετρήσεις Λεκάνης',
-    'plat.metrics.vessels': 'Πλοία Ζωντανά',
-    'plat.metrics.alerts': 'Ενεργές Ειδοποιήσεις',
-    'plat.metrics.risk': 'Κίνδυνος Δυτ. Μεσ.',
-    'plat.metrics.ais': 'Κάλυψη AIS',
-    'plat.bottom.feeds': 'ΤΡΟΦΟΔΟΣΙΕΣ: AIS · SIGINT · OSINT · ΚΟΙΝΩΝΙΚΑ · ΚΥΒΕΡΝΟ · ΝΑΥΤΙΚΑ',
-    'plat.bottom.latency': 'ΚΑΘΥΣΤΕΡΗΣΗ ΔΕΔΟΜΕΝΩΝ: <90δλ',
-    'plat.bottom.coverage': 'ΚΑΛΥΨΗ: 36 ΚΡΑΤΗ-ΕΘΝΗ',
-    'plat.map.alert': 'ΕΝΕΡΓΗ ΑΠΕΙΛΗ · ΔΥΤΙΚΟΣ ΜΕΣΟΓΕΙΑΚΟΣ ΔΙΑΔΡΟΜΟΣ',
-    'plat.map.gibraltar': 'ΣΤΕΝΟ ΓΙΒΡΑΛΤΑΡ',
-    'plat.map.africa': 'ΔΙΑΔΡΟΜΟΣ Β. ΑΦΡΙΚΗΣ',
-    'plat.map.eastern': 'ΑΝΑΤΟΛΙΚΗ ΜΕΣΟΓΕΙΟΣ',
-    'plat.map.sicily': 'ΣΤΕΝΟ ΣΙΚΕΛΙΑΣ',
     // Why
-    'why.label': 'Γιατί Sentinella Mare',
-    'why.h2': "Γιατί <br><span>Sentinella Mare</span>",
-    'why.lead': 'Είμαστε εταιρεία πληροφόρησης με τεχνολογική υποστήριξη — όχι πάροχος αναφορών. Κάθε σήμα που παρέχουμε είναι εφαρμόσιμο, συναφές και μπροστά από την αναστάτωση.',
-    'why.c1.title': 'Προβλεπτικό, Όχι Αντιδραστικό',
-    'why.c1.text': "Μετατρέπουμε γεωπολιτικά, κυβερνο-, στρατιωτικά και περιβαλλοντικά σήματα σε ερεθίσματα έγκαιρης προειδοποίησης — πριν ο κίνδυνος φτάσει στους τίτλους ειδήσεων.",
-    'why.c2.title': 'Μεσογειακή Εγγενής Εμπειρογνωμοσύνη',
-    'why.c2.text': "Είμαστε ενσωματωμένοι σε λιμενικές κοινότητες και θεσμικά δίκτυα που οι παγκόσμιες εταιρείες δεν μπορούν να αναπαράγουν από απόσταση.",
-    'why.c3.title': 'Ιδιόκτητη Μηχανή Πληροφόρησης',
-    'why.c3.text': "Μια AI εκπαιδευμένη ειδικά στον ναυτιλιακό κίνδυνο — όχι γενικό wrapper — εντοπίζει πρότυπα σε ναυτιλία, ναυτική δραστηριότητα, υποδομές και ενεργειακούς διαδρόμους.",
-    'why.c4.title': 'Αποδοτικότητα Συνδρομής',
-    'why.c4.text': 'Το διαβαθμισμένο μοντέλο συνδρομής παρέχει συνεχή αξία πληροφόρησης — χωρίς χρέωση ανά ώρα, χωρίς αβεβαιότητα συμβολαίου. Πληρώνετε για επίμονη ενημέρωση, όχι για περιστασιακές αναφορές που αρχαιώνουν κατά την άφιξη.',
-    'why.c5.title': 'Πληροφόρηση που Διαβάζεται',
-    'why.c5.text': "Τα Intelligence Briefings μας μεταφράζουν όσα κινούνται στη λεκάνη — περιστατικά, κανονιστικές αλλαγές, μοτίβα υβριδικών απειλών — σε ανάλυση σε απλή γλώσσα.",
-    'why.c6.title': 'Κλιμακούμενη Κάλυψη',
-    'why.c6.text': 'Ξεκινώντας από τον σαρδηνιακό ναυτιλιακό διάδρομο και επεκτεινόμενοι στις ναυτιλιακές γραμμές της Δυτικής Μεσογείου, Αδριατικής, Τυρρηνικής και Ανατολικής Μεσογείου καθώς η πελατειακή βάση αναπτύσσεται.',
     // Pricing
-    'pricing.label': 'Πλατφόρμα Συνδρομής',
-    'pricing.h2': '<span>Mediterranean Watch</span> <br>Επίπεδα Συνδρομής',
-    'pricing.lead': "Τρία επίπεδα — από ένα δωρεάν ζωντανό Κέντρο Ειδοποιήσεων έως προσομοίωση βάθους και αναφορές συμμόρφωσης επιπέδου Enterprise — σχεδιασμένα για τις στιγμές που δεν επιτρέπουν λάθος.",
-    'pricing.tab.port': 'Παρακολούθηση Λιμανιών',
-    'pricing.tab.fleet': 'Παρακολούθηση Στόλου',
-    'pricing.tab.cable': 'Υποθαλάσσιο Καλώδιο',
-    'pricing.port.sub': 'Λιμενικές αρχές και χειριστές τερματικών',
-    'pricing.fleet.sub': 'Χειριστές ferry και εταιρείες logistics',
-    'pricing.cable.sub': 'Χειριστές καλωδίων και εταιρείες υποδομών',
-    'pricing.tier.exposure': 'Exposure',
-    'pricing.tier.sentinel': 'Sentinel',
-    'pricing.tier.command': 'Command',
-    'pricing.port.exp.best': 'Ιδανικό για χειριστές λιμανιών που χρειάζονται σαφή βασική εικόνα της υβριδικής απειλής στα κρίσιμα λιμενικά στοιχεία.',
-    'pricing.port.sen.best': 'Ιδανικό για ομάδες που χρειάζονται ζωντανές ειδοποιήσεις, ανίχνευση τάσεων και καλύτερη ορατότητα στις μεταβαλλόμενες συνθήκες κινδύνου.',
-    'pricing.port.cmd.best': 'Ιδανικό για λιμάνια υψηλής προτεραιότητας που απαιτούν προβλεπτική πρόγνωση απειλών, εκτελεστικές αναφορές και υποστήριξη λήψης αποφάσεων.',
-    'pricing.fleet.exp.best': 'Ιδανικό για χειριστές ferry, logistics και πλοίων που χρειάζονται ορατότητα έκθεσης σε επίπεδο δρομολογίου χωρίς επιπλέον αναλυτικό φόρτο.',
-    'pricing.fleet.sen.best': 'Ιδανικό για χειριστές που διαχειρίζονται ενεργά δρομολόγια και χρειάζονται έγκαιρη προειδοποίηση για γεωπολιτικές, κυβερνο-, καιρικές και γκρίζες διαταραχές.',
-    'pricing.fleet.cmd.best': 'Ιδανικό για χειριστές στόλου που απαιτούν προβλεπτική νοημοσύνη δρομολόγησης, ανάλυση σεναρίων και εξατομικευμένες ενημερώσεις κινδύνου.',
-    'pricing.cable.exp.best': 'Ιδανικό για ιδιοκτήτες υποθαλάσσιων καλωδίων και ομάδες υποδομών που χρειάζονται ορατότητα βασικής έκθεσης κατά μήκος βασικών διαδρόμων καλωδίων.',
-    'pricing.cable.sen.best': 'Ιδανικό για ομάδες που παρακολουθούν δραστηριότητα πλοίων, κίνδυνο αγκυροβολίας και περιφερειακή αστάθεια κοντά σε ευαίσθητες υποδομές καλωδίων.',
-    'pricing.cable.cmd.best': 'Ιδανικό για χειριστές κρίσιμων υποδομών που απαιτούν προβλεπτική πρόγνωση απειλών, υποστήριξη κλιμάκωσης και στρατηγική ανάλυση κινδύνου.',
-    'pricing.f.weekly': 'Εβδομαδιαία σύνοψη',
-    'pricing.f.mhtes.port': 'Ζωντανό τερματικό πληροφοριών MHTES',
-    'pricing.f.window72.port': 'Παράθυρο έκθεσης 72 ωρών',
-    'pricing.f.ais.port': 'Σήματα AIS και γκρίζου στόλου',
-    'pricing.f.geo.disinfo': 'Γεωπολιτικές ροές και παραπληροφόρηση',
-    'pricing.f.cyber': 'Σήματα κυβερνοευπαθειών',
-    'pricing.f.pred': 'Προβλεπτική μοντελοποίηση απειλών',
-    'pricing.f.alerts': 'Ειδοποιήσεις έκθεσης σε πραγματικό χρόνο',
-    'pricing.f.custom': 'Εξατομικευμένες αναφορές πληροφοριών',
-    'pricing.f.api': 'Πρόσβαση API και εξαγωγή δεδομένων',
-    'pricing.f.analyst': 'Αφιερωμένη υποστήριξη αναλυτή',
-    'pricing.f.mhtes.fleet': 'Ζωντανό MHTES ανά πλοίο',
-    'pricing.f.route': 'Βαθμολόγηση στρατηγικής αξίας δρομολογίου',
-    'pricing.f.ais.fleet': 'Ειδοποιήσεις AIS και σημείων συμφόρησης',
-    'pricing.f.spoof': 'Ανίχνευση πλαστοπροσωπίας AIS και παρεμβολής GPS',
-    'pricing.f.window72.fleet': 'Προβλεπτικό παράθυρο 72 ωρών',
-    'pricing.f.scenario.fleet': 'Ανάλυση σεναρίων και δρομολογίων',
-    'pricing.f.mhtes.cable': 'Ζωντανό MHTES ανά διαδρομή καλωδίου',
-    'pricing.f.vessel': 'Βαθμός πίεσης πυκνότητας πλοίων',
-    'pricing.f.anchor': 'Ειδοποιήσεις κινδύνου αγκυροβολίας και έλξης',
-    'pricing.f.geo.hybrid': 'Γεωπολιτικά και υβριδικά σήματα',
-    'pricing.f.cyber.cable': 'Κυβερνο- και υποδομική έκθεση',
-    'pricing.f.disinfo': 'Παρακολούθηση παραπληροφόρησης',
-    'pricing.f.scenario.cable': 'Μοντελοποίηση σεναρίων και δολιοφθοράς',
-    'pricing.btn.launch': 'Εκκίνηση Τώρα',
-    'pricing.btn.access': 'Αίτηση Πρόσβασης',
-    'pricing.btn.contact': 'Επικοινωνήστε μαζί μας',
     // Clients
-    'clients.label': 'Ποιους Εξυπηρετούμε',
-    'clients.h2': "Ποιους <br><span>Εξυπηρετούμε</span>",
-    'client.1': 'Λιμενικές Αρχές',
-    'client.2': 'Χειριστές Πορθμείων',
-    'client.3': 'Λειτουργίες Κρουαζιέρας',
-    'client.4': 'Εταιρείες Logistics',
-    'client.5': 'Ναυτιλιακοί Ασφαλιστές',
-    'client.6': 'Μεταφορά Ενέργειας',
-    'client.7': 'Private Equity',
-    'client.8': 'Θεσμικοί Επενδυτές',
-    'client.9': 'Κρίσιμες Υποδομές',
-    'client.10': 'Κυβερνητικοί Φορείς',
     // CTA
-    'cta.h2': 'Έτοιμοι να Δείτε τη <br><span>Μεσόγειο Καθαρά;</span>',
-    'cta.p': "Εξερευνήστε το τερματικό πληροφόρησης ή ζητήστε μια επίδειξη πλατφόρμας.",
-    'cta.btn1': 'Αίτηση Demo Πλατφόρμας',
     // Footer
-    'footer.brand': 'Ναυτιλιακή πληροφόρηση Μεσογείου. Πληροφόρηση κινδύνου με τεχνητή νοημοσύνη για ναυτιλιακούς χειριστές, εταιρείες logistics και θεσμικούς επενδυτές που πλέουν στη στρατηγικά πιο πολύπλοκη θάλασσα του κόσμου.',
     'footer.hq': '// ΕΔΡ: Βρυξέλλες, Βέλγιο',
     'footer.h.services': 'Υπηρεσίες',
     'footer.h.coverage': 'Κάλυψη',
     'footer.h.contact': 'Επικοινωνία',
-    'footer.l.dashboard': 'Τερματικό Πληροφοριών Mediterranean Watch',
-    'footer.l.tiers': 'Επίπεδα Συνδρομής',
     'footer.geo.1': 'Στενό Γιβραλτάρ',
     'footer.geo.2': 'Τυρρηνική Θάλασσα',
     'footer.geo.3': 'Στενό Σικελίας',
