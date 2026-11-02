@@ -582,7 +582,7 @@
     <img src="../Sentinella Mare Logo_White.png" alt="Sentinella Mare">
     <div class="nav-brand">
       <span class="n1">SENTINELLA MARE</span>
-      <span class="n2" data-i18n="nav.tagline">Mediterranean Intelligence</span>
+      <span class="n2" data-i18n="nav.tagline">Maritime Critical Infrastructure</span>
     </div>
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
@@ -597,9 +597,25 @@
         </svg>
       </button>
       <div class="nav-comp-menu" id="servicesMenu">
-        <a href="../#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
-          Intelligence Platform
-          <span class="comp-link-label">Live Intelligence Platform</span>
+        <a href="../#ports" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Ports
+          <span class="comp-link-label">P-MHTES · NIS2 · CER · Circ. 177</span>
+        </a>
+        <a href="../#cables" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Subsea Cables
+          <span class="comp-link-label">C-MHTES · corridor watch</span>
+        </a>
+        <a href="../#convergence" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Convergence Alerts
+          <span class="comp-link-label">Signals that cluster at one asset</span>
+        </a>
+        <a href="../#simulations" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Hybrid-Threat Simulations
+          <span class="comp-link-label">Rehearse your worst day</span>
+        </a>
+        <a href="../#my-assets" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          My Assets
+          <span class="comp-link-label">Your estate, your sensor feeds</span>
         </a>
         <a href="../#briefings" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
           Intelligence Briefings
@@ -607,9 +623,8 @@
         </a>
       </div>
     </div>
-    <a href="../#platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
-    <a href="../#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
-    <a href="../#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
+    <a href="../#methodology" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Methodology</a>
+    <a href="../#enterprise" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Enterprise</a>
     <a href="/Leadership" class="active" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
       <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
@@ -757,7 +772,7 @@ let currentLang = 'en';
 
 const translations = {
   en: {
-    'nav.tagline': 'Mediterranean Intelligence',
+    'nav.tagline': 'Maritime Critical Infrastructure',
     'nav.services': 'Services',
     'nav.platform': 'Live Platform',
     'nav.pricing': 'Subscription',
@@ -799,7 +814,7 @@ const translations = {
     'footer.platform': 'MARITIME HYBRID THREAT INTELLIGENCE PLATFORM',
   },
   it: {
-    'nav.tagline': 'Intelligence Mediterranea',
+    'nav.tagline': 'Infrastrutture Critiche Marittime',
     'nav.services': 'Servizi',
     'nav.platform': 'Piattaforma Live',
     'nav.pricing': 'Abbonamento',
@@ -836,7 +851,7 @@ const translations = {
     'footer.platform': 'PIATTAFORMA DI INTELLIGENCE IBRIDA MARITTIMA',
   },
   ar: {
-    'nav.tagline': 'الاستخبارات المتوسطية',
+    'nav.tagline': 'البنية التحتية البحرية الحيوية',
     'nav.services': 'الخدمات',
     'nav.platform': 'المنصة المباشرة',
     'nav.pricing': 'الاشتراك',
@@ -873,7 +888,7 @@ const translations = {
     'footer.platform': 'منصة استخبارات التهديدات الهجينة البحرية',
   },
   el: {
-    'nav.tagline': 'Μεσογειακή Πληροφόρηση',
+    'nav.tagline': 'Κρίσιμες Θαλάσσιες Υποδομές',
     'nav.services': 'Υπηρεσίες',
     'nav.platform': 'Ζωντανή Πλατφόρμα',
     'nav.pricing': 'Συνδρομή',
