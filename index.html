@@ -1945,8 +1945,10 @@
       </div>
   </div>
   <figure class="feature-media">
-    <img src="Enterprise_My_Assets.png" alt="MARE's My Assets view for a portfolio of Sardinian ports: a portfolio risk gauge beside individual P-MHTES scores, with Cagliari at 3.75 and Olbia at 2.50." loading="lazy" decoding="async">
-    <figcaption>Sardinian port portfolio · P-MHTES per port</figcaption>
+    <!-- Muted, looping, no controls: a silent product loop, not a video to watch.
+         Reduced-motion visitors get the poster frame only (see script below). -->
+    <video class="autoplay-loop" src="Port_Profile_Piraeus.mp4" poster="Port_Profile_Piraeus_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording: opening the Port of Piraeus on the Ops Map — its live profile with threat lanes and the nearest dark vessels, then the 30-day summary of alerts, dark periods and P-MHTES."></video>
+    <figcaption>Port of Piraeus · live profile, then the 30-day summary</figcaption>
   </figure>
 </section>
 
@@ -2317,6 +2319,15 @@
     words[i].classList.add('on');
     fit();
   }, 2400);
+})();
+</script>
+<script>
+// Reduced motion: stop autoplaying loops and leave the poster frame.
+(function () {
+  if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  document.querySelectorAll('video.autoplay-loop').forEach(function (v) {
+    v.removeAttribute('autoplay'); v.pause(); v.controls = true;
+  });
 })();
 </script>
 <!-- FOOTER -->
