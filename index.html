@@ -218,20 +218,32 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-  /* Blip dots on radar */
+  /* Blip dots on radar.
+     Each blip lights the instant the sweep crosses it, then decays like a
+     phosphor trace before the next pass. The sweep starts pointing east and
+     turns clockwise once per 5s, so a blip at bearing θ (clockwise from east,
+     measured from the radar centre to the dot's centre) is hit at θ/360 × 5s.
+     Delays are that time minus one period — negative, so at page load every
+     blip is already part-way through the decay its last (unseen) pass left,
+     and nothing ever shows before the beam reaches it.
+     Moving a blip means recomputing its delay: θ = atan2(y-250, x-250) on the
+     500px radar, delay = θ/360 × 5 − 5. */
   .blip {
     position: absolute; border-radius: 50%;
     background: var(--green-glow);
     box-shadow: 0 0 10px var(--green-glow);
-    animation: blip-fade 5s ease-in-out infinite;
+    opacity: 0;
+    animation: blip-fade 5s linear infinite;
   }
-  .blip-1 { width: 6px; height: 6px; top: 28%; left: 58%; animation-delay: 1.2s; }
-  .blip-2 { width: 5px; height: 5px; top: 60%; left: 35%; animation-delay: 2.8s; }
-  .blip-3 { width: 4px; height: 4px; top: 45%; left: 72%; animation-delay: 0.5s; }
-  .blip-4 { width: 6px; height: 6px; top: 70%; left: 62%; animation-delay: 3.5s; }
+  .blip-1 { width: 6px; height: 6px; top: 28%; left: 58%; animation-delay: -0.946s; } /* 291.9° */
+  .blip-2 { width: 5px; height: 5px; top: 60%; left: 35%; animation-delay: -2.999s; } /* 144.1° */
+  .blip-3 { width: 4px; height: 4px; top: 45%; left: 72%; animation-delay: -0.161s; } /* 348.4° */
+  .blip-4 { width: 6px; height: 6px; top: 70%; left: 62%; animation-delay: -4.187s; } /* 58.5° */
   @keyframes blip-fade {
-    0%, 100% { opacity: 0; transform: scale(0.5); }
-    40%, 60% { opacity: 1; transform: scale(1); }
+    0%   { opacity: 1; transform: scale(1.5); }
+    6%   { opacity: 1; transform: scale(1); }
+    70%  { opacity: 0; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1); }
   }
 
   .hero-content { position: relative; z-index: 2; max-width: 640px; }
@@ -1897,9 +1909,9 @@
   <div class="hero-content">
     <div class="hero-tag" data-i18n="hero2.tag">MARITIME CRITICAL INFRASTRUCTURE · HQ: Brussels, Belgium</div>
     <h1>
-      <span class="sr-only">Protecting European Maritime Critical Infrastructure, one port, one cable, one vessel at a time</span>
+      <span class="sr-only">Protecting European Maritime Critical Infrastructure, one port, one cable at a time</span>
       <span aria-hidden="true">Protecting European Maritime Critical Infrastructure,
-      <span class="h1-rot"><span class="nw">one <span class="rotator" id="heroRotator"><span class="on">port</span><span>cable</span><span>vessel</span></span></span> <span class="nw">at a time</span></span></span>
+      <span class="h1-rot"><span class="nw">one <span class="rotator" id="heroRotator"><span class="on">port</span><span>cable</span></span></span> <span class="nw">at a time</span></span></span>
     </h1>
     <p class="hero-desc">
       <span data-i18n="hero2.desc">Ports and subsea cables are what NIS2 and the CER Directive exist to protect. MARE scores the hybrid-threat exposure of each one with a published methodology whose pillars map onto the risk assessments those frameworks require — live today across the Mediterranean and its Black Sea approaches.</span>
@@ -2301,7 +2313,7 @@
 </main>
 
 <script>
-// Hero word rotator: port → cable → vessel. Holds on "port" under reduced
+// Hero word rotator: port ↔ cable. Holds on "port" under reduced
 // motion; the full sentence is in a screen-reader-only span, so assistive tech
 // never hears the word change.
 (function () {
