@@ -1649,19 +1649,22 @@
      wide as the longest word and the line never reflows as the word changes. */
   /* The static title is white; only the rotating word takes a colour.
      Overrides the site-wide `h1 span { green }`. */
-  .hero h1 > span[aria-hidden] { color: var(--white); }
-  .rotator {
-    display: inline-grid; vertical-align: bottom; color: var(--rotator);
-    transition: width .45s ease;
-  }
+  .hero h1 > span[aria-hidden], .hero h1 .h1-rot, .hero h1 .nw { color: var(--white); }
+  /* No layout jump, by construction: the slot is always as wide as its
+     widest word (all three share one grid cell), and the last line can only
+     wrap between "one ___" and "at a time" — never because of which word is
+     showing. Shorter words sit centred in the slot. */
+  .h1-rot { display: block; }
+  .h1-rot .nw { white-space: nowrap; }
+  .rotator { display: inline-grid; vertical-align: baseline; color: var(--rotator); }
   .rotator > span {
-    grid-area: 1 / 1; justify-self: start; white-space: nowrap; color: var(--rotator);
+    grid-area: 1 / 1; justify-self: center; white-space: nowrap; color: var(--rotator);
     opacity: 0; transform: translateY(0.35em);
     transition: opacity .45s ease, transform .45s ease;
   }
   .rotator > span.on { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
-    .rotator, .rotator > span { transition: none; transform: none; }
+    .rotator > span { transition: none; transform: none; }
   }
 
   /* Feature rows: copy on one side, capture on the other, alternating */
@@ -1895,9 +1898,8 @@
     <div class="hero-tag" data-i18n="hero2.tag">MARITIME CRITICAL INFRASTRUCTURE · HQ: Brussels, Belgium</div>
     <h1>
       <span class="sr-only">Protecting European Maritime Critical Infrastructure, one port, one cable, one vessel at a time</span>
-      <span aria-hidden="true">Protecting European Maritime Critical Infrastructure, one
-      <span class="rotator" id="heroRotator"><span class="on">port</span><span>cable</span><span>vessel</span></span>
-      at a time</span>
+      <span aria-hidden="true">Protecting European Maritime Critical Infrastructure,
+      <span class="h1-rot"><span class="nw">one <span class="rotator" id="heroRotator"><span class="on">port</span><span>cable</span><span>vessel</span></span></span> <span class="nw">at a time</span></span></span>
     </h1>
     <p class="hero-desc">
       <span data-i18n="hero2.desc">Ports and subsea cables are what NIS2 and the CER Directive exist to protect. MARE scores the hybrid-threat exposure of each one with a published methodology whose pillars map onto the risk assessments those frameworks require — live today across the Mediterranean and its Black Sea approaches.</span>
@@ -2306,18 +2308,11 @@
   var root = document.getElementById('heroRotator');
   if (!root) return;
   var words = root.children, i = 0;
-  // The slot narrows/widens to the active word, so "port" is not followed by
-  // a gap the width of "vessel". Re-measured on resize (the h1 is fluid).
-  function fit() { root.style.width = words[i].getBoundingClientRect().width + 'px'; }
-  fit();
-  window.addEventListener('resize', fit);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   setInterval(function () {
     words[i].classList.remove('on');
     i = (i + 1) % words.length;
     words[i].classList.add('on');
-    fit();
   }, 2400);
 })();
 </script>
