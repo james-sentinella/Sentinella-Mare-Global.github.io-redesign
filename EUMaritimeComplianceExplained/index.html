@@ -700,6 +700,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
      height (driven by the logo) is unchanged. */
   .nav-links > a { padding: 5px 0; }
   .nav-comp-trigger { padding: 5px 0; }
+
+  /* Footer: Intelligence Briefings column (matches the landing page) */
+  .footer-briefings p:not(.footer-nav-title) { line-height: 1.6; }
+  .footer-col a.footer-briefings-link { color: var(--gold); font-weight: 700; margin-bottom: 20px; }
+  .footer-col a.footer-briefings-link:hover { color: var(--white); }
 </style>
 </head>
 <body>
@@ -1024,15 +1029,18 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
     <div class="footer-brand">
       <img src="/Sentinella Mare Logo_White.png" alt="Sentinella Mare">
       <div class="footer-brand-text">
-        <p>Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
+        <p>Hybrid-threat exposure intelligence for European ports and subsea cables, mapped to NIS2 and the CER Directive.</p>
         <span class="hq">// HQ: Brussels, Belgium</span>
       </div>
     </div>
     <div class="footer-col">
       <p class="footer-nav-title">Services</p>
-      <a href="/#services">Mediterranean Watch Intelligence Platform</a>
-      <a href="/#briefings">Intelligence Briefings</a>
-      <a href="/#pricing">Subscription Tiers</a>
+      <a href="/#ports">Ports</a>
+      <a href="/#cables">Subsea Cables</a>
+      <a href="/#convergence">Convergence Alerts</a>
+      <a href="/#simulations">Hybrid-Threat Simulations</a>
+      <a href="/#my-assets">My Assets</a>
+      <a href="/#enterprise">Enterprise</a>
     </div>
     <div class="footer-col">
       <p class="footer-nav-title">Coverage</p>
@@ -1042,11 +1050,13 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
       <p>Adriatic Sea</p>
       <p>Eastern Mediterranean</p>
     </div>
-    <div class="footer-col">
+    <div class="footer-col footer-briefings" id="briefings">
+      <p class="footer-nav-title">Intelligence Briefings</p>
+      <p>Field notes from the basin — incidents, regulatory shifts and hybrid-threat patterns, in plain language.</p>
+      <a href="https://sentinellamare.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-briefings-link">Read the Briefings →</a>
       <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn">Contact</a>
     </div>
-  </div>
-
+    </div>
   <div class="footer-bottom" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 48px;padding:20px 0 0;border-top:1px solid rgba(255,255,255,0.07);">
     <p style="font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:1.5px;color:#f0f5fc;text-transform:uppercase;">© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
     <div class="footer-legal-links">

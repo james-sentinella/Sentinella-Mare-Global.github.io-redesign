@@ -556,6 +556,11 @@
      height (driven by the logo) is unchanged. */
   .nav-links > a { padding: 5px 0; }
   .nav-comp-trigger { padding: 5px 0; }
+
+  /* Footer: Intelligence Briefings column (matches the landing page) */
+  .footer-briefings p:not(.footer-nav-title) { line-height: 1.6; }
+  .footer-col a.footer-briefings-link { color: var(--gold); font-weight: 700; margin-bottom: 20px; }
+  .footer-col a.footer-briefings-link:hover { color: var(--white); }
 </style>
 <script type="application/ld+json">
 {
@@ -731,15 +736,18 @@
     <div class="footer-brand">
       <img src="../Sentinella Mare Logo_White.png" alt="Sentinella Mare">
       <div class="footer-brand-text">
-        <p data-i18n="footer.brand">Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
+        <p>Hybrid-threat exposure intelligence for European ports and subsea cables, mapped to NIS2 and the CER Directive.</p>
         <span class="hq" data-i18n="footer.hq">// HQ: Brussels, Belgium</span>
       </div>
     </div>
     <div class="footer-col">
       <p class="footer-nav-title" data-i18n="footer.h.services">Services</p>
-      <a href="../#services" data-i18n="footer.l.dashboard">Mediterranean Watch Intelligence Platform</a>
-      <a href="../#briefings" data-i18n="footer.l.briefings">Intelligence Briefings</a>
-      <a href="../#pricing" data-i18n="footer.l.tiers">Subscription Tiers</a>
+      <a href="../#ports">Ports</a>
+      <a href="../#cables">Subsea Cables</a>
+      <a href="../#convergence">Convergence Alerts</a>
+      <a href="../#simulations">Hybrid-Threat Simulations</a>
+      <a href="../#my-assets">My Assets</a>
+      <a href="../#enterprise">Enterprise</a>
     </div>
     <div class="footer-col">
       <p class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</p>
@@ -749,10 +757,13 @@
       <p data-i18n="footer.geo.4">Adriatic Sea</p>
       <p data-i18n="footer.geo.5">Eastern Mediterranean</p>
     </div>
-    <div class="footer-col">
+    <div class="footer-col footer-briefings" id="briefings">
+      <p class="footer-nav-title">Intelligence Briefings</p>
+      <p>Field notes from the basin — incidents, regulatory shifts and hybrid-threat patterns, in plain language.</p>
+      <a href="https://sentinellamare.substack.com/" target="_blank" rel="noopener noreferrer" class="footer-briefings-link">Read the Briefings →</a>
       <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn" data-i18n="footer.h.contact">Contact</a>
     </div>
-  </div>
+    </div>
   <div class="footer-bottom">
     <p data-i18n="footer.copy">© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
     <p data-i18n="footer.platform">MARITIME HYBRID THREAT INTELLIGENCE PLATFORM</p>
@@ -797,12 +808,8 @@ const translations = {
     'leader2.bio2': 'She brings more than eight years of public policy and management consulting experience to the role, supporting U.S. federal agencies — including the IRS, FEMA, and DHS — on regulatory compliance, emergency management, and data-driven operational improvement. Her background spans national-level emergency management policy and doctrine, business continuity and resilience planning, program evaluation for federally mandated initiatives, and workforce training design grounded in adult learning methodologies.',
     'leader2.bio3': 'That cross-functional experience is the foundation of Sentinella Mare\'s operating architecture — the compliance frameworks, service agreements, and partnership structures that move the MHTES methodology from concept to contract with Mediterranean port authorities, fleet operators, and subsea cable stakeholders.',
     'leader2.bio4': 'Erika co-founded Sentinella Mare to give the MHTES framework the institutional backbone it needs to operate credibly with regulators and partners across the Mediterranean.',
-    'footer.brand': 'Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world\'s most strategically complex sea.',
     'footer.hq': '// HQ: Brussels, Belgium',
     'footer.h.services': 'Services',
-    'footer.l.dashboard': 'Mediterranean Watch Intelligence Platform',
-    'footer.l.briefings': 'Intelligence Briefings',
-    'footer.l.tiers': 'Subscription Tiers',
     'footer.h.coverage': 'Coverage',
     'footer.geo.1': 'Strait of Gibraltar',
     'footer.geo.2': 'Tyrrhenian Sea',
@@ -834,12 +841,8 @@ const translations = {
     'leader2.bio2': 'Porta al ruolo più di otto anni di esperienza in politiche pubbliche e consulenza gestionale, avendo supportato agenzie federali statunitensi — tra cui IRS, FEMA e DHS — in materia di conformità normativa, gestione delle emergenze e miglioramento operativo basato sui dati. Il suo background spazia dalla politica e dottrina di gestione delle emergenze a livello nazionale, alla pianificazione della continuità operativa e della resilienza, alla valutazione di programmi federali obbligatori, fino alla progettazione di percorsi formativi per adulti.',
     'leader2.bio3': 'Questa esperienza trasversale è il fondamento dell\'architettura operativa di Sentinella Mare — i framework di compliance, gli accordi di servizio e le strutture di partnership che portano la metodologia MHTES dal concetto al contratto con autorità portuali mediterranee, operatori di flotte e stakeholder dei cavi sottomarini.',
     'leader2.bio4': 'Erika ha co-fondato Sentinella Mare per dare al framework MHTES la struttura istituzionale necessaria a operare con credibilità presso regolatori e partner in tutto il Mediterraneo.',
-    'footer.brand': 'Intelligence marittima mediterranea. Intelligence del rischio basata sull\'IA per operatori di spedizioni, società di logistica e investitori istituzionali.',
     'footer.hq': '// QG: Bruxelles, Belgio',
     'footer.h.services': 'Servizi',
-    'footer.l.dashboard': 'Mediterranean Watch Intelligence Platform',
-    'footer.l.briefings': 'Intelligence Briefings',
-    'footer.l.tiers': 'Livelli di Abbonamento',
     'footer.h.coverage': 'Copertura',
     'footer.geo.1': 'Stretto di Gibilterra',
     'footer.geo.2': 'Mar Tirreno',
@@ -871,12 +874,8 @@ const translations = {
     'leader2.bio2': 'تجلب إلى هذا الدور أكثر من ثماني سنوات من الخبرة في السياسات العامة والاستشارات الإدارية، حيث دعمت وكالات فيدرالية أمريكية — بما فيها مصلحة الضرائب وإدارة الطوارئ الفيدرالية ووزارة الأمن الداخلي — في مجالات الامتثال التنظيمي وإدارة الطوارئ والتحسين التشغيلي القائم على البيانات. يمتد خلفيتها ليشمل سياسة وعقيدة إدارة الطوارئ على المستوى الوطني، وتخطيط استمرارية الأعمال والمرونة، وتقييم البرامج الفيدرالية الإلزامية، وتصميم برامج تدريب القوى العاملة.',
     'leader2.bio3': 'هذه الخبرة متعددة الوظائف هي أساس البنية التشغيلية لـ Sentinella Mare — أطر الامتثال واتفاقيات الخدمة وهياكل الشراكة التي تنقل منهجية MHTES من المفهوم إلى العقد مع سلطات الموانئ المتوسطية ومشغلي الأساطيل وأصحاب المصلحة في الكابلات البحرية.',
     'leader2.bio4': 'شاركت إيريكا في تأسيس Sentinella Mare لمنح إطار MHTES العمود الفقري المؤسسي الذي يحتاجه للعمل بمصداقية مع الجهات التنظيمية والشركاء في جميع أنحاء البحر المتوسط.',
-    'footer.brand': 'استخبارات بحرية متوسطية. استخبارات المخاطر المدعومة بالذكاء الاصطناعي لمشغلي الشحن والشركات اللوجستية والمستثمرين المؤسسيين.',
     'footer.hq': '// المقر: بروكسل، بلجيكا',
     'footer.h.services': 'الخدمات',
-    'footer.l.dashboard': 'منصة استخبارات مراقبة البحر المتوسط',
-    'footer.l.briefings': 'Intelligence Briefings',
-    'footer.l.tiers': 'مستويات الاشتراك',
     'footer.h.coverage': 'التغطية',
     'footer.geo.1': 'مضيق جبل طارق',
     'footer.geo.2': 'البحر التيراني',
@@ -908,12 +907,8 @@ const translations = {
     'leader2.bio2': 'Φέρνει στον ρόλο περισσότερα από οκτώ χρόνια εμπειρίας σε δημόσιες πολιτικές και διοικητική συμβουλευτική, υποστηρίζοντας ομοσπονδιακές αμερικανικές υπηρεσίες — συμπεριλαμβανομένων της IRS, FEMA και DHS — σε θέματα ρυθμιστικής συμμόρφωσης, διαχείρισης έκτακτων καταστάσεων και λειτουργικής βελτίωσης βασισμένης σε δεδομένα. Το υπόβαθρό της εκτείνεται στην πολιτική και το δόγμα διαχείρισης καταστάσεων έκτακτης ανάγκης εθνικού επιπέδου, στον επιχειρησιακό σχεδιασμό συνέχειας και ανθεκτικότητας, στην αξιολόγηση ομοσπονδιακά εντεταλμένων προγραμμάτων και στον σχεδιασμό εκπαίδευσης εργατικού δυναμικού.',
     'leader2.bio3': 'Αυτή η διαλειτουργική εμπειρία αποτελεί τη βάση της επιχειρησιακής αρχιτεκτονικής της Sentinella Mare — τα πλαίσια συμμόρφωσης, οι συμφωνίες υπηρεσιών και οι δομές συνεργασίας που μεταφέρουν τη μεθοδολογία MHTES από την ιδέα στη σύμβαση με μεσογειακές λιμενικές αρχές, χειριστές στόλων και ενδιαφερόμενους υποθαλάσσιων καλωδίων.',
     'leader2.bio4': 'Η Erika συν-ίδρυσε τη Sentinella Mare για να δώσει στο πλαίσιο MHTES τη θεσμική ραχοκοκαλιά που χρειάζεται για να λειτουργεί αξιόπιστα με ρυθμιστικές αρχές και συνεργάτες σε όλη τη Μεσόγειο.',
-    'footer.brand': 'Μεσογειακή ναυτική πληροφόρηση. Πληροφόρηση κινδύνου με τεχνητή νοημοσύνη για ναυτιλιακούς χειριστές, εταιρείες logistics και θεσμικούς επενδυτές.',
     'footer.hq': '// ΕΔΡ: Βρυξέλλες, Βέλγιο',
     'footer.h.services': 'Υπηρεσίες',
-    'footer.l.dashboard': 'Πλατφόρμα Πληροφοριών Παρακολούθησης Μεσογείου',
-    'footer.l.briefings': 'Intelligence Briefings',
-    'footer.l.tiers': 'Επίπεδα Συνδρομής',
     'footer.h.coverage': 'Κάλυψη',
     'footer.geo.1': 'Στενό του Γιβραλτάρ',
     'footer.geo.2': 'Τυρρηνική Θάλασσα',
